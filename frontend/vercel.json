@@ -19,7 +19,7 @@
   "rewrites": [
     {
       "source": "/sitemap.xml",
-      "destination": "https://REPLACE-ME-api.up.railway.app/sitemap.xml"
+      "destination": "https://maistrynia-berehove-production.up.railway.app/sitemap.xml"
     },
     {
       "source": "/",
