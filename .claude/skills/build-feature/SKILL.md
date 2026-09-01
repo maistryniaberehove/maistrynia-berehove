@@ -36,7 +36,7 @@ When invoked with a feature name:
 
 3. **Phase 1 — Database:**
    Use the Task tool to spawn the `database` agent:
-   > "Read specs/features/<feature-name>.md and specs/db.md. Create EF Core migration for all models required by this feature. If SeedDemoData is referenced, implement SeedData.cs per specs/db.md. Run: cd backend && dotnet ef migrations add <FeatureName>Schema"
+   > "Read specs/features/<feature-name>.md and specs/db.md. Create EF Core migration for all models required by this feature. Run: cd backend && dotnet ef migrations add <FeatureName>Schema"
 
    Wait for Phase 1 to complete before proceeding.
 
