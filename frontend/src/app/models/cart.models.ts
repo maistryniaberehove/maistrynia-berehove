@@ -1,0 +1,55 @@
+import { ApiResponse } from './catalog.models';
+
+export type { ApiResponse };
+
+/** GET /api/cart — full cart payload. */
+export interface CartDto {
+  itemCount: number;
+  subtotal: number;
+  items: CartLineDto[];
+}
+
+/** One cart line as returned by the cart API. */
+export interface CartLineDto {
+  cartItemId: number;
+  productId: number;
+  variantId: number;
+  name: string;
+  slug: string;
+  /** Display category name. */
+  category: string;
+  imageUrl?: string | null;
+  /** Live unit price from the active variant. */
+  price: number;
+  weight: number;
+  weightUnit: string;
+  quantity: number;
+  lineTotal: number;
+  /** False when the product/variant is inactive. */
+  isActive: boolean;
+  /** False when the product cannot be purchased (out of stock flag). */
+  isAvailable?: boolean;
+}
+
+/** PUT /api/cart/items/:id body. */
+export interface UpdateCartItemRequest {
+  quantity: number;
+}
+
+export type CartLoadStatus = 'idle' | 'loading' | 'ready' | 'error';
+
+/** @deprecated Prefer LocaleService + Transloco plural keys. */
+export function cartItemCountLabel(count: number): string {
+  const n = Math.abs(Math.trunc(count));
+  const mod100 = n % 100;
+  const mod10 = n % 10;
+  if (mod100 > 10 && mod100 < 20) return `${n} товарів`;
+  if (mod10 === 1) return `${n} товар`;
+  if (mod10 >= 2 && mod10 <= 4) return `${n} товари`;
+  return `${n} товарів`;
+}
+
+/** Hard cap for cart line quantity (no stock-based limit). */
+export function cartLineMaxQuantity(): number {
+  return 12;
+}

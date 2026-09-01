@@ -1,0 +1,403 @@
+<app-navbar />
+
+<main class="min-h-[calc(100vh-60px)] bg-[var(--bg-page)] px-3 pb-28 pt-4 sm:px-6 sm:pb-12 sm:pt-5 lg:px-8 lg:py-7">
+  <div class="mx-auto max-w-[1216px]">
+    <section class="mb-4 hidden sm:block lg:hidden" [attr.aria-label]="'catalog.filtersAria' | transloco">
+      <button
+        type="button"
+        class="flex min-h-12 w-full items-center justify-between rounded-[var(--radius-md)] border border-[var(--border-subtle)] bg-white px-4 font-bold shadow-[var(--shadow-xs)]"
+        [attr.aria-expanded]="tabletFiltersOpen()"
+        aria-controls="tablet-filters"
+        (click)="tabletFiltersOpen.update((open) => !open)"
+      >
+        <span class="flex items-center gap-2"><app-icon name="filter" [size]="18" /> {{ 'catalog.filters' | transloco }}</span>
+        <app-icon name="chevron-down" [size]="18" />
+      </button>
+      @if (tabletFiltersOpen()) {
+        <div id="tablet-filters" class="mt-3 rounded-[var(--radius-md)] border border-[var(--border-subtle)] bg-white p-4 shadow-[var(--shadow-xs)]">
+          <div class="flex flex-wrap items-center gap-2">
+            @if (store.categoryError()) {
+              <span class="text-sm text-[var(--chili-700)]">{{ 'catalog.categoriesUnavailable' | transloco }}</span>
+            } @else {
+              <div class="flex w-full flex-col gap-1.5">
+                @for (category of store.categories(); track category.id) {
+                  <label class="flex min-h-9 cursor-pointer items-center gap-2 rounded-lg px-1 text-sm">
+                    <input
+                      type="checkbox"
+                      class="size-4 shrink-0 accent-[var(--marigold-400)]"
+                      [checked]="store.filters().categories.includes(category.slug)"
+                      (change)="toggleAppliedCategory(category.slug)"
+                    />
+                    <span class="min-w-0 flex-1 truncate font-semibold" [title]="category.name">{{ category.name }}</span>
+                    <span class="shrink-0 text-[var(--text-muted)]">{{ category.activeProductCount }}</span>
+                  </label>
+                  @for (child of category.children; track child.id) {
+                    <label class="flex min-h-8 cursor-pointer items-center gap-2 rounded-lg py-0.5 pl-6 text-sm">
+                      <input
+                        type="checkbox"
+                        class="size-3.5 shrink-0 accent-[var(--marigold-400)]"
+                        [checked]="store.filters().categories.includes(child.slug)"
+                        (change)="toggleAppliedCategory(child.slug)"
+                      />
+                      <span class="min-w-0 flex-1 truncate text-[var(--espresso-700)]" [title]="child.name">{{ child.name }}</span>
+                      <span class="shrink-0 text-xs text-[var(--text-muted)]">{{ child.activeProductCount }}</span>
+                    </label>
+                  }
+                }
+              </div>
+            }
+            <span class="ml-auto text-sm text-[var(--text-muted)]">
+              {{ store.filters().minPrice ?? store.page()?.priceMin ?? 0 }}–{{ store.filters().maxPrice ?? store.page()?.priceMax ?? 0 }} ₴
+            </span>
+          </div>
+          <div class="mt-4 flex max-w-sm items-end gap-2">
+            <label class="flex-1 text-[11px] font-bold uppercase tracking-wider text-[var(--text-muted)]">
+              {{ 'catalog.from' | transloco }}
+              <input
+                type="number"
+                min="0"
+                class="mt-1 min-h-11 w-full rounded-lg border border-[var(--border-strong)] bg-white px-3 text-base"
+                [value]="store.filters().minPrice ?? ''"
+                (input)="updateAppliedPrice('min', $any($event.target).value)"
+              />
+            </label>
+            <span class="pb-3 text-[var(--kraft-500)]">–</span>
+            <label class="flex-1 text-[11px] font-bold uppercase tracking-wider text-[var(--text-muted)]">
+              {{ 'catalog.to' | transloco }}
+              <input
+                type="number"
+                min="0"
+                class="mt-1 min-h-11 w-full rounded-lg border border-[var(--border-strong)] bg-white px-3 text-base"
+                [value]="store.filters().maxPrice ?? ''"
+                (input)="updateAppliedPrice('max', $any($event.target).value)"
+              />
+            </label>
+            <button type="button" class="min-h-11 rounded-lg px-3 font-semibold text-[var(--cinnamon-700)]" (click)="store.reset()">{{ 'catalog.reset' | transloco }}</button>
+          </div>
+        </div>
+      }
+    </section>
+
+    <div class="flex items-start gap-8">
+      <aside
+        class="sticky top-[104px] hidden w-[260px] shrink-0 rounded-[var(--radius-lg)] border border-[var(--border-subtle)] bg-white p-5 shadow-[var(--shadow-xs)] lg:block"
+        [attr.aria-label]="'catalog.filtersAria' | transloco"
+      >
+        <div class="mb-5 flex items-center justify-between">
+          <h2 class="m-0 text-xl">{{ 'catalog.filters' | transloco }}</h2>
+          <button type="button" class="text-sm font-semibold text-[var(--cinnamon-700)]" (click)="store.reset()">{{ 'catalog.reset' | transloco }}</button>
+        </div>
+        <div class="mb-5 border-t border-[var(--border-subtle)] pt-4">
+          <h3 class="fn-eyebrow mb-3">{{ 'catalog.categories' | transloco }}</h3>
+          @if (store.categoryError()) {
+            <p class="text-sm text-[var(--chili-700)]">{{ 'catalog.categoriesLoadError' | transloco }}</p>
+          } @else if (!store.categories().length) {
+            <div class="space-y-3" [attr.aria-label]="'catalog.categoriesLoading' | transloco">
+              <div class="h-6 animate-pulse rounded bg-[var(--kraft-200)]"></div>
+              <div class="h-6 animate-pulse rounded bg-[var(--kraft-200)]"></div>
+              <div class="h-6 animate-pulse rounded bg-[var(--kraft-200)]"></div>
+            </div>
+          } @else {
+            <div class="space-y-2">
+              @for (category of store.categories(); track category.id) {
+                <label class="flex min-h-10 w-full cursor-pointer items-center gap-3 rounded-lg">
+                  <input
+                    type="checkbox"
+                    class="size-[18px] shrink-0 accent-[var(--marigold-400)]"
+                    [checked]="store.filters().categories.includes(category.slug)"
+                    (change)="toggleAppliedCategory(category.slug)"
+                  />
+                  <span class="min-w-0 flex-1 truncate font-medium" [title]="category.name">{{ category.name }}</span>
+                  <span class="shrink-0 text-sm text-[var(--text-muted)]">{{ category.activeProductCount }}</span>
+                </label>
+                @for (child of category.children; track child.id) {
+                  <label class="flex min-h-9 w-full cursor-pointer items-center gap-3 rounded-lg pl-7">
+                    <input
+                      type="checkbox"
+                      class="size-4 shrink-0 accent-[var(--marigold-400)]"
+                      [checked]="store.filters().categories.includes(child.slug)"
+                      (change)="toggleAppliedCategory(child.slug)"
+                    />
+                    <span class="min-w-0 flex-1 truncate text-sm text-[var(--espresso-700)]" [title]="child.name">{{ child.name }}</span>
+                    <span class="shrink-0 text-xs text-[var(--text-muted)]">{{ child.activeProductCount }}</span>
+                  </label>
+                }
+              }
+            </div>
+          }
+        </div>
+
+        <div class="border-t border-[var(--border-subtle)] pt-4">
+          <h3 class="fn-eyebrow mb-4">{{ 'catalog.price' | transloco }}</h3>
+          <div class="relative mx-1 mb-5 h-1.5 rounded-full bg-[var(--kraft-200)]">
+            <div class="absolute inset-y-0 left-[12%] right-[12%] rounded-full bg-[var(--marigold-400)]"></div>
+            <span class="absolute left-[12%] top-1/2 size-[18px] -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-[var(--espresso-800)] bg-white shadow"></span>
+            <span class="absolute right-[12%] top-1/2 size-[18px] translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-[var(--espresso-800)] bg-white shadow"></span>
+          </div>
+          <div class="flex items-end gap-2">
+            <label class="min-w-0 flex-1 text-[11px] font-bold uppercase tracking-wider text-[var(--text-muted)]">
+              {{ 'catalog.from' | transloco }}
+              <input
+                type="number"
+                min="0"
+                class="mt-1 w-full rounded-lg border border-[var(--border-strong)] px-2.5 py-2 text-base"
+                [value]="store.filters().minPrice ?? ''"
+                (input)="updateAppliedPrice('min', $any($event.target).value)"
+              />
+            </label>
+            <span class="pb-2.5 text-[var(--kraft-500)]">–</span>
+            <label class="min-w-0 flex-1 text-[11px] font-bold uppercase tracking-wider text-[var(--text-muted)]">
+              {{ 'catalog.to' | transloco }}
+              <input
+                type="number"
+                min="0"
+                class="mt-1 w-full rounded-lg border border-[var(--border-strong)] px-2.5 py-2 text-base"
+                [value]="store.filters().maxPrice ?? ''"
+                (input)="updateAppliedPrice('max', $any($event.target).value)"
+              />
+            </label>
+          </div>
+          <button
+            type="button"
+            class="mt-6 min-h-11 w-full cursor-pointer rounded-lg border border-[var(--espresso-800)] font-bold"
+            (click)="store.reset()"
+          >{{ 'catalog.resetFilters' | transloco }}</button>
+        </div>
+      </aside>
+
+      <section class="min-w-0 flex-1" aria-labelledby="catalog-heading">
+        <h1 id="catalog-heading" class="sr-only">{{ 'catalog.title' | transloco }}</h1>
+        <div class="relative mb-4 sm:mb-5">
+          <span class="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-[var(--kraft-500)]">
+            <app-icon name="search" [size]="18" />
+          </span>
+          <input
+            type="search"
+            class="min-h-11 w-full rounded-[var(--radius-md)] border border-[var(--border-strong)] bg-white py-2.5 pl-11 pr-11 text-sm text-[var(--espresso-800)] outline-none focus-visible:border-[var(--marigold-400)]"
+            [attr.aria-label]="'catalog.searchAria' | transloco"
+            [placeholder]="'catalog.searchPlaceholder' | transloco"
+            maxlength="100"
+            [value]="searchDraft()"
+            (input)="updateSearch($any($event.target).value)"
+          />
+          @if (searchDraft()) {
+            <button
+              type="button"
+              class="absolute right-2 top-1/2 grid size-8 -translate-y-1/2 place-items-center rounded-full text-[var(--kraft-500)] hover:text-[var(--espresso-800)]"
+              [attr.aria-label]="'catalog.clearSearch' | transloco"
+              (click)="clearSearch()"
+            >
+              ×
+            </button>
+          }
+        </div>
+        <div class="mb-4 flex items-center justify-between gap-3 sm:mb-5">
+          <p class="m-0 text-sm text-[var(--espresso-700)] sm:text-base" aria-live="polite">
+            <strong class="text-[var(--espresso-900)]">{{
+              productsCountLabel().key | transloco: { count: productsCountLabel().count }
+            }}</strong>
+          </p>
+          <label class="flex items-center gap-2">
+            <span class="hidden text-sm text-[var(--text-muted)] lg:inline">{{ 'catalog.sort' | transloco }}</span>
+            <span class="relative">
+              <select
+                class="min-h-10 appearance-none rounded-[var(--radius-md)] border border-[var(--border-strong)] bg-white py-2 pl-3 pr-9 text-sm font-semibold"
+                [attr.aria-label]="'catalog.sortAria' | transloco"
+                [value]="store.filters().sortBy"
+                (change)="updateSort($any($event.target).value)"
+              >
+                @for (option of sortOptions; track option.value) {
+                  <option [value]="option.value">{{ option.labelKey | transloco }}</option>
+                }
+              </select>
+              <span class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2"><app-icon name="chevron-down" [size]="15" /></span>
+            </span>
+          </label>
+        </div>
+
+        <div aria-live="polite" aria-atomic="true" class="sr-only">
+          @if (store.initialLoading()) { {{ 'catalog.loading' | transloco }} }
+          @else if (store.refetching()) { {{ 'catalog.updating' | transloco }} }
+          @else if (store.error()) { {{ 'catalog.loadErrorLive' | transloco }} }
+          @else { {{ 'catalog.shown' | transloco: { count: store.page()?.totalCount ?? 0 } }} }
+        </div>
+
+        @if (store.initialLoading()) {
+          <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:gap-[22px]" [attr.aria-label]="'catalog.loading' | transloco">
+            @for (skeleton of skeletons; track skeleton) {
+              <div class="overflow-hidden rounded-[var(--radius-lg)] border border-[var(--border-subtle)] bg-white">
+                <div class="aspect-square animate-pulse bg-[var(--kraft-200)]"></div>
+                <div class="space-y-2.5 p-3 sm:p-4">
+                  <div class="h-2.5 w-2/5 animate-pulse rounded bg-[var(--kraft-200)]"></div>
+                  <div class="h-4 w-5/6 animate-pulse rounded bg-[var(--kraft-200)]"></div>
+                  <div class="h-4 w-3/5 animate-pulse rounded bg-[var(--kraft-200)]"></div>
+                  <div class="flex justify-between pt-2">
+                    <div class="h-6 w-16 animate-pulse rounded bg-[var(--kraft-200)]"></div>
+                    <div class="h-9 w-20 animate-pulse rounded bg-[var(--kraft-200)]"></div>
+                  </div>
+                </div>
+              </div>
+            }
+          </div>
+        } @else if (store.error()) {
+          <div class="rounded-[var(--radius-lg)] border border-[var(--chili-100)] bg-white px-6 py-14 text-center" role="alert">
+            <h2 class="mb-3 text-xl">{{ 'catalog.errorTitle' | transloco }}</h2>
+            <p class="mx-auto mb-6 max-w-md text-[var(--espresso-700)]">{{ store.error() }}</p>
+            <button type="button" class="rounded-lg bg-[var(--marigold-400)] px-5 py-3 font-extrabold" (click)="store.retry()">{{ 'common.retry' | transloco }}</button>
+          </div>
+        } @else if (!store.items().length) {
+          <div class="rounded-[var(--radius-lg)] border border-[var(--border-subtle)] bg-white px-6 py-14 text-center shadow-[var(--shadow-xs)]">
+            <div class="mx-auto mb-6 grid size-[120px] place-items-center rounded-full border border-[var(--border-subtle)] bg-[var(--kraft-100)] text-[var(--kraft-500)]">
+              <app-icon name="package" [size]="56" />
+            </div>
+            <h2 class="mb-2 text-xl">{{ 'catalog.emptyTitle' | transloco }}</h2>
+            <p class="mx-auto mb-6 max-w-md text-[var(--espresso-700)]">{{ 'catalog.emptyBody' | transloco }}</p>
+            <button type="button" class="rounded-lg bg-[var(--marigold-400)] px-5 py-3 font-extrabold" (click)="store.reset()">{{ 'catalog.resetFilters' | transloco }}</button>
+          </div>
+        } @else {
+          <div
+            class="grid grid-cols-2 gap-3 transition-opacity sm:grid-cols-3 sm:gap-4 lg:gap-[22px]"
+            [class.opacity-55]="store.refetching()"
+            [attr.aria-busy]="store.refetching()"
+          >
+            @for (product of store.items(); track product.id) {
+              <app-product-card [product]="product" [status]="cartStatus(product.id)" (add)="addToCart($event)" />
+            }
+          </div>
+
+          @if (store.hasMore()) {
+            <div
+              #loadMoreSentinel
+              class="flex min-h-16 items-center justify-center py-6"
+              [attr.aria-busy]="store.loadingMore()"
+            >
+              @if (store.loadingMore()) {
+                <span class="text-sm font-semibold text-[var(--kraft-500)]">{{ 'catalog.loadingMore' | transloco }}</span>
+              }
+            </div>
+          }
+        }
+      </section>
+    </div>
+  </div>
+</main>
+
+<div class="fixed inset-x-0 bottom-0 z-20 bg-gradient-to-t from-[var(--bg-page)] via-[var(--bg-page)] to-transparent px-4 pb-[calc(14px+env(safe-area-inset-bottom))] pt-6 sm:hidden">
+  <button
+    #mobileFilterButton
+    type="button"
+    class="flex min-h-[52px] w-full items-center justify-center gap-2 rounded-full bg-[var(--espresso-800)] px-5 font-extrabold text-[var(--kraft-50)] shadow-[var(--shadow-md)]"
+    [attr.aria-expanded]="sheetOpen()"
+    aria-controls="mobile-filter-sheet"
+    (click)="openSheet()"
+  >
+    <app-icon name="filter" [size]="20" />
+    {{ 'catalog.filters' | transloco }}
+    @if (activeFilterCount() > 0) {
+      <span class="rounded-full bg-[var(--marigold-400)] px-2 py-0.5 text-xs text-[var(--espresso-900)]">{{ activeFilterCount() }}</span>
+    }
+  </button>
+</div>
+
+@if (sheetOpen() && pendingFilters(); as pending) {
+  <div
+    class="fixed inset-0 z-50 bg-[rgba(42,26,13,.48)] sm:hidden"
+    role="presentation"
+    (click)="closeSheet()"
+    (keydown.escape)="closeSheet()"
+  >
+    <section
+      id="mobile-filter-sheet"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="filter-sheet-title"
+      cdkTrapFocus
+      [cdkTrapFocusAutoCapture]="true"
+      class="absolute inset-x-0 bottom-0 max-h-[90dvh] overflow-y-auto rounded-t-[24px] bg-white px-5 pb-[calc(24px+env(safe-area-inset-bottom))] pt-3 shadow-[var(--shadow-lg)]"
+      (click)="$event.stopPropagation()"
+      (keydown.escape)="closeSheet()"
+    >
+      <div class="mx-auto mb-3 h-1.5 w-11 rounded-full bg-[var(--kraft-300)]"></div>
+      <div class="mb-4 flex items-center justify-between">
+        <h2 id="filter-sheet-title" class="m-0 text-xl">{{ 'catalog.filters' | transloco }}</h2>
+        <button type="button" class="grid size-11 place-items-center rounded-lg" [attr.aria-label]="'catalog.closeFilters' | transloco" (click)="closeSheet()">
+          <app-icon name="close" [size]="21" />
+        </button>
+      </div>
+
+      <h3 class="fn-eyebrow mb-2">{{ 'catalog.categories' | transloco }}</h3>
+      @if (store.categoryError()) {
+        <p class="text-sm text-[var(--chili-700)]">{{ 'catalog.categoriesUnavailable' | transloco }}.</p>
+      } @else {
+        <div class="mb-5 space-y-1">
+          @for (category of store.categories(); track category.id) {
+            <label class="flex min-h-12 w-full cursor-pointer items-center gap-3 rounded-lg px-1">
+              <input
+                type="checkbox"
+                class="size-5 shrink-0 accent-[var(--marigold-400)]"
+                [checked]="pending.categories.includes(category.slug)"
+                (change)="togglePendingCategory(category.slug)"
+              />
+              <span class="min-w-0 flex-1 truncate text-lg font-medium" [title]="category.name">{{ category.name }}</span>
+              <span class="shrink-0 text-sm text-[var(--text-muted)]">{{ category.activeProductCount }}</span>
+            </label>
+            @for (child of category.children; track child.id) {
+              <label class="flex min-h-11 w-full cursor-pointer items-center gap-3 rounded-lg py-1 pl-8">
+                <input
+                  type="checkbox"
+                  class="size-[18px] shrink-0 accent-[var(--marigold-400)]"
+                  [checked]="pending.categories.includes(child.slug)"
+                  (change)="togglePendingCategory(child.slug)"
+                />
+                <span class="min-w-0 flex-1 truncate text-base text-[var(--espresso-700)]" [title]="child.name">{{ child.name }}</span>
+                <span class="shrink-0 text-sm text-[var(--text-muted)]">{{ child.activeProductCount }}</span>
+              </label>
+            }
+          }
+        </div>
+      }
+
+      <h3 class="fn-eyebrow mb-3">{{ 'catalog.price' | transloco }}</h3>
+      <div class="mb-6 flex items-end gap-3">
+        <label class="min-w-0 flex-1 text-xs font-bold text-[var(--text-muted)]">
+          {{ 'catalog.from' | transloco }}
+          <input
+            type="number"
+            min="0"
+            class="mt-1 min-h-12 w-full rounded-[var(--radius-md)] border border-[var(--border-strong)] px-3 text-base text-[var(--espresso-800)]"
+            [value]="pending.minPrice ?? ''"
+            (input)="updatePendingPrice('min', $any($event.target).value)"
+          />
+        </label>
+        <span class="pb-3 text-[var(--kraft-500)]">–</span>
+        <label class="min-w-0 flex-1 text-xs font-bold text-[var(--text-muted)]">
+          {{ 'catalog.to' | transloco }}
+          <input
+            type="number"
+            min="0"
+            class="mt-1 min-h-12 w-full rounded-[var(--radius-md)] border border-[var(--border-strong)] px-3 text-base text-[var(--espresso-800)]"
+            [value]="pending.maxPrice ?? ''"
+            (input)="updatePendingPrice('max', $any($event.target).value)"
+          />
+        </label>
+      </div>
+
+      <div class="flex gap-3">
+        <button type="button" class="min-h-[52px] rounded-[var(--radius-md)] border border-[var(--espresso-800)] px-4 font-bold" (click)="resetPending()">{{ 'catalog.reset' | transloco }}</button>
+        <button type="button" class="min-h-[52px] flex-1 rounded-[var(--radius-md)] bg-[var(--marigold-400)] px-4 font-extrabold" (click)="applyPending()">
+          {{ store.previewCount() == null ? ('catalog.showProductsPending' | transloco) : ('catalog.showProducts' | transloco: { count: store.previewCount() }) }}
+        </button>
+      </div>
+    </section>
+  </div>
+}
+
+@if (toast(); as toastMessage) {
+  <div
+    class="fixed right-4 top-20 z-[60] rounded-[var(--radius-md)] px-5 py-3 font-bold text-white shadow-[var(--shadow-lg)]"
+    [class.bg-[var(--garden-700)]]="!toastMessage.error"
+    [class.bg-[var(--chili-700)]]="toastMessage.error"
+    role="status"
+    aria-live="polite"
+  >{{ toastMessage.message }}</div>
+}

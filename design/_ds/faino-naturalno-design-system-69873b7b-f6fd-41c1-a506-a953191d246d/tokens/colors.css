@@ -1,0 +1,80 @@
+/* Майстриня — Color tokens
+   Palette sampled from the "Майстриня" business card: rose watercolour brushstroke,
+   black ink script, thin gold frame, warm paper, pastel yarn accents.
+   Variable NAMES are unchanged from the previous system so every screen and
+   component keeps working; only the values were re-sampled. */
+:root {
+  /* — Rose (primary brand pink, from the brushstroke) — */
+  --marigold-50:  #FDF3F1;
+  --marigold-100: #FAE2DE;
+  --marigold-200: #F4C8C4;
+  --marigold-300: #EDAAA6;
+  --marigold-400: #E79088; /* core brand rose */
+  --marigold-500: #D5766F;
+  --marigold-600: #BB5C58;
+  --marigold-700: #954844;
+  --sun-300:      #F6CFC6; /* pale blush highlight */
+
+  /* — Ink (script black-brown) — */
+  --espresso-900: #191412;
+  --espresso-800: #26201D; /* core ink */
+  --espresso-700: #3C3330;
+  --espresso-600: #574B47;
+  --espresso-500: #75655F;
+
+  /* — Gold (thin frame line on the card) — */
+  --cinnamon-700: #A87A33;
+  --cinnamon-500: #C39A4E;
+  --amber-500:    #C9A063;
+  --amber-300:    #E3C99D;
+
+  /* — Warm paper neutrals — */
+  --kraft-50:  #FFFAF8; /* page paper */
+  --kraft-100: #FBF1EE; /* card surface */
+  --kraft-200: #F3E4E0; /* muted surface / rule */
+  --kraft-300: #E6D2CD; /* border */
+  --kraft-400: #D2B8B2; /* strong border */
+  --kraft-500: #97817C; /* muted text on paper */
+
+  /* — Yarn teal (fresh / positive accent) — */
+  --garden-100: #DCEDE9;
+  --garden-500: #4E9C8F;
+  --garden-700: #34706A;
+
+  /* — Raspberry (sale / alert accent) — */
+  --chili-100: #F7DCE1;
+  --chili-500: #C24559;
+  --chili-700: #98303F;
+
+  /* — Pure — */
+  --white: #FFFFFF;
+  --black: #120E0D;
+
+  /* ————— Semantic aliases ————— */
+  --brand-primary:      var(--marigold-400);
+  --brand-primary-ink:  var(--espresso-800);
+  --brand-secondary:    var(--cinnamon-700);
+
+  --bg-page:            var(--kraft-50);
+  --surface-card:       var(--white);
+  --surface-cream:      var(--kraft-100);
+  --surface-muted:      var(--kraft-200);
+  --surface-ink:        var(--espresso-800); /* dark section bg */
+
+  --text-strong:        var(--espresso-900);
+  --text-body:          var(--espresso-800);
+  --text-muted:         var(--kraft-500);
+  --text-on-marigold:   var(--espresso-900);
+  --text-on-ink:        var(--kraft-50);
+  --text-link:          var(--cinnamon-700);
+  --text-link-hover:    var(--espresso-900);
+
+  --border-subtle:      var(--kraft-300);
+  --border-strong:      var(--kraft-400);
+  --border-ink:         var(--espresso-800);
+
+  --accent-fresh:       var(--garden-500);
+  --accent-sale:        var(--chili-500);
+
+  --focus-ring:         var(--marigold-500);
+}

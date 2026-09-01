@@ -1,0 +1,16 @@
+namespace FaynoShop.API.DTOs.Cart;
+
+/// <summary>
+/// Adds units of a product variant to the anonymous session cart.
+/// Catalog typically sends quantity 1 (or omits it); the product page may send 1–N from the stepper.
+/// </summary>
+public sealed class AddCartItemRequest
+{
+    public int VariantId { get; init; }
+
+    /// <summary>
+    /// Units to add. Defaults to 1 when omitted.
+    /// Server enforces CartLimits.MaxLineQuantity as the max units per line.
+    /// </summary>
+    public int? Quantity { get; init; }
+}

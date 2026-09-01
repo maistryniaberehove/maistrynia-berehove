@@ -1,0 +1,567 @@
+import { DecimalPipe, Location } from '@angular/common';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  DestroyRef,
+  ElementRef,
+  computed,
+  inject,
+  signal,
+  viewChild,
+} from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
+import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
+import {
+  Subject,
+  debounceTime,
+  distinctUntilChanged,
+  finalize,
+  forkJoin,
+  of,
+  switchMap,
+} from 'rxjs';
+
+import { IconComponent } from '../../components/icon/icon.component';
+import { NavbarComponent } from '../../components/navbar/navbar.component';
+import { LocaleService } from '../../i18n/locale.service';
+import { DeliveryAddressDto, NpBranch, NpCity } from '../../models/auth.models';
+import { cartItemCountLabel } from '../../models/cart.models';
+import { PlaceOrderRequest, DeliveryMethod } from '../../models/order.models';
+import { AuthService, extractApiError } from '../../services/auth.service';
+import { CartService } from '../../services/cart.service';
+import { OrderService } from '../../services/order.service';
+import { ShippingService } from '../../services/shipping.service';
+import { ToastService } from '../../services/toast.service';
+import { sanitizeImageUrl } from '../../utils/sanitize-image-url';
+import {
+  AUTH_ERROR_CLASSES,
+  AUTH_FIELD_CLASSES,
+  AUTH_LABEL_CLASSES,
+  AUTH_LINK_CLASSES,
+  isRequiredUaPhone,
+  normalizePhone,
+} from '../auth/auth.helpers';
+
+@Component({
+  selector: 'app-checkout',
+  imports: [
+    DecimalPipe,
+    IconComponent,
+    NavbarComponent,
+    ReactiveFormsModule,
+    RouterLink,
+    TranslocoPipe,
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  templateUrl: './checkout.component.html',
+  styleUrl: './checkout.component.css',
+})
+export class CheckoutComponent {
+  private readonly fb = inject(FormBuilder);
+  private readonly cart = inject(CartService);
+  protected readonly locale = inject(LocaleService);
+  private readonly i18n = inject(TranslocoService);
+  private readonly auth = inject(AuthService);
+  private readonly orders = inject(OrderService);
+  private readonly shipping = inject(ShippingService);
+  private readonly toasts = inject(ToastService);
+  private readonly router = inject(Router);
+  private readonly location = inject(Location);
+  private readonly destroyRef = inject(DestroyRef);
+  private readonly cityQuery$ = new Subject<string>();
+
+  private readonly cityInput =
+    viewChild<ElementRef<HTMLInputElement>>('cityInput');
+
+  protected readonly fieldClasses = AUTH_FIELD_CLASSES;
+  protected readonly labelClasses = AUTH_LABEL_CLASSES;
+  protected readonly errorClasses = AUTH_ERROR_CLASSES;
+  protected readonly linkClasses = AUTH_LINK_CLASSES;
+
+  protected readonly items = this.cart.items;
+  protected readonly subtotal = this.cart.subtotal;
+  protected readonly loadStatus = this.cart.loadStatus;
+  protected readonly loadError = this.cart.loadError;
+
+  protected readonly prefillReady = signal(false);
+  protected readonly submitting = signal(false);
+  protected readonly submitted = signal(false);
+
+  protected readonly savedAddress = signal<DeliveryAddressDto | null>(null);
+  protected readonly editingDelivery = signal(false);
+  protected readonly cityError = signal<string | null>(null);
+  protected readonly branchError = signal<string | null>(null);
+
+  protected readonly cityQuery = signal('');
+  protected readonly cityMatches = signal<NpCity[]>([]);
+  protected readonly citySearching = signal(false);
+  protected readonly cityTouched = signal(false);
+  protected readonly selectedCity = signal<NpCity | null>(null);
+  protected readonly branches = signal<NpBranch[]>([]);
+  protected readonly branchesLoading = signal(false);
+  protected readonly selectedBranchId = signal('');
+  protected readonly deliveryMethod = signal<DeliveryMethod>('nova-poshta');
+  protected readonly streetAddress = signal('');
+  protected readonly streetError = signal<string | null>(null);
+
+  protected readonly form = this.fb.nonNullable.group({
+    firstName: ['', [Validators.required, Validators.maxLength(50)]],
+    lastName: ['', [Validators.required, Validators.maxLength(50)]],
+    phone: [
+      '',
+      [
+        Validators.required,
+        Validators.maxLength(20),
+        (control) =>
+          !control.value || isRequiredUaPhone(String(control.value))
+            ? null
+            : { phone: true },
+      ],
+    ],
+    email: ['', [Validators.required, Validators.email, Validators.maxLength(100)]],
+    comment: ['', [Validators.maxLength(1000)]],
+  });
+
+  protected readonly showCityList = computed(() => {
+    return (
+      this.showDeliveryEditors() &&
+      this.cityTouched() &&
+      !this.selectedCity() &&
+      this.cityMatches().length > 0 &&
+      this.cityQuery().trim().length >= 1
+    );
+  });
+
+  protected readonly showCityEmpty = computed(() => {
+    return (
+      this.showDeliveryEditors() &&
+      this.cityTouched() &&
+      !this.selectedCity() &&
+      this.cityQuery().trim().length >= 1 &&
+      !this.citySearching() &&
+      this.cityMatches().length === 0
+    );
+  });
+
+  protected readonly showSavedBanner = computed(
+    () =>
+      this.deliveryMethod() === 'nova-poshta' &&
+      !!this.savedAddress() &&
+      !this.editingDelivery(),
+  );
+
+  protected readonly showDeliveryEditors = computed(
+    () =>
+      this.deliveryMethod() === 'nova-poshta' &&
+      (!this.savedAddress() || this.editingDelivery()),
+  );
+
+  protected readonly deliveryFeeLabelKey = computed(() => {
+    switch (this.deliveryMethod()) {
+      case 'pickup':
+        return 'checkout.deliveryFree';
+      case 'ukrposhta':
+        return 'checkout.deliveryUkrRates';
+      default:
+        return 'checkout.deliveryNpRates';
+    }
+  });
+
+  protected readonly formLocked = computed(() => this.submitting());
+
+  protected readonly submitBlocked = computed(
+    () =>
+      this.loadStatus() !== 'ready' ||
+      !this.cart.hasItems() ||
+      !this.prefillReady() ||
+      this.submitting(),
+  );
+
+  protected readonly countLabel = computed(() => {
+    const count = this.cart.itemCount();
+    const form = this.locale.pluralForm(count);
+    return this.i18n.translate(`plural.cartItems.${form}`, { count });
+  });
+
+  protected readonly skeletonSlots = [0, 1, 2];
+
+  protected readonly deliveryOptions: { value: DeliveryMethod; labelKey: string }[] = [
+    { value: 'nova-poshta', labelKey: 'checkout.methodNovaPoshta' },
+    { value: 'ukrposhta', labelKey: 'checkout.methodUkrposhta' },
+    { value: 'pickup', labelKey: 'checkout.methodPickup' },
+  ];
+
+  constructor() {
+    this.cart.closeDrawer();
+    this.bootstrap();
+
+    this.cityQuery$
+      .pipe(
+        debounceTime(280),
+        distinctUntilChanged(),
+        switchMap((query) => {
+          const q = query.trim();
+          if (q.length < 1) {
+            this.cityMatches.set([]);
+            this.citySearching.set(false);
+            return of(null);
+          }
+          this.citySearching.set(true);
+          return this.shipping.searchCities(q).pipe(
+            finalize(() => this.citySearching.set(false)),
+          );
+        }),
+        takeUntilDestroyed(this.destroyRef),
+      )
+      .subscribe({
+        next: (response) => {
+          if (!response) return;
+          if (response.success && response.data) {
+            this.cityMatches.set(response.data);
+          } else {
+            this.cityMatches.set([]);
+            if (!response.success) {
+              this.toasts.error(response.error ?? this.i18n.translate('checkout.searchCitiesError'));
+            }
+          }
+        },
+        error: () => {
+          this.cityMatches.set([]);
+          this.toasts.error(this.i18n.translate('checkout.searchCitiesError'));
+        },
+      });
+  }
+
+  protected retryCart(): void {
+    this.cart
+      .loadCart()
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: (response) => {
+          if (response.success && response.data && (response.data.items?.length ?? 0) === 0) {
+            void this.router.navigate(this.locale.commands('cart'));
+          }
+        },
+      });
+  }
+
+  protected goBack(): void {
+    if (typeof window !== 'undefined' && window.history.length > 1) {
+      this.location.back();
+      return;
+    }
+    void this.router.navigate(this.locale.commands('cart'));
+  }
+
+  protected lineImage(url: string | null | undefined): string | null {
+    return sanitizeImageUrl(url);
+  }
+
+  protected onCityInput(value: string): void {
+    this.cityError.set(null);
+    this.cityQuery.set(value);
+    this.cityTouched.set(true);
+    this.selectedCity.set(null);
+    this.selectedBranchId.set('');
+    this.branches.set([]);
+    this.branchError.set(null);
+    this.cityQuery$.next(value);
+  }
+
+  protected pickCity(city: NpCity): void {
+    this.cityError.set(null);
+    this.branchError.set(null);
+    this.selectedCity.set(city);
+    this.cityQuery.set(city.cityName);
+    this.cityTouched.set(false);
+    this.cityMatches.set([]);
+    this.selectedBranchId.set('');
+    this.loadBranches(city.cityId);
+  }
+
+  protected onBranchChange(branchId: string): void {
+    this.branchError.set(null);
+    this.selectedBranchId.set(branchId);
+  }
+
+  protected changeSavedAddress(): void {
+    this.editingDelivery.set(true);
+    const saved = this.savedAddress();
+    if (saved) {
+      this.cityQuery.set(saved.cityName);
+      this.selectedCity.set({
+        cityId: saved.cityId,
+        cityName: saved.cityName,
+        region: saved.cityRegion,
+      });
+      this.selectedBranchId.set(saved.branchId);
+      this.loadBranches(saved.cityId, saved.branchId);
+    }
+    queueMicrotask(() => this.cityInput()?.nativeElement.focus());
+  }
+
+  protected fieldInvalid(name: 'firstName' | 'lastName' | 'phone' | 'email' | 'comment'): boolean {
+    const control = this.form.controls[name];
+    return control.invalid && (control.touched || this.submitted());
+  }
+
+  protected fieldError(name: 'firstName' | 'lastName' | 'phone' | 'email' | 'comment'): string {
+    const control = this.form.controls[name];
+    if (control.hasError('required')) {
+      switch (name) {
+        case 'firstName':
+          return this.i18n.translate('checkout.reqFirstName');
+        case 'lastName':
+          return this.i18n.translate('checkout.reqLastName');
+        case 'phone':
+          return this.i18n.translate('checkout.reqPhone');
+        case 'email':
+          return this.i18n.translate('checkout.reqEmail');
+        default:
+          return this.i18n.translate('checkout.requiredField');
+      }
+    }
+    if (control.hasError('email')) {
+      return this.i18n.translate('checkout.invalidEmail');
+    }
+    if (control.hasError('phone')) {
+      return this.i18n.translate('checkout.invalidPhone');
+    }
+    if (control.hasError('maxlength')) {
+      return name === 'comment' ? this.i18n.translate('checkout.commentTooLong') : this.i18n.translate('checkout.valueTooLong');
+    }
+    return this.i18n.translate('checkout.checkField');
+  }
+
+  protected setDeliveryMethod(method: DeliveryMethod): void {
+    this.deliveryMethod.set(method);
+    this.cityError.set(null);
+    this.branchError.set(null);
+    this.streetError.set(null);
+  }
+
+  protected onStreetInput(value: string): void {
+    this.streetError.set(null);
+    this.streetAddress.set(value);
+  }
+
+  protected placeOrder(): void {
+    if (this.submitBlocked()) return;
+
+    this.submitted.set(true);
+    this.cityError.set(null);
+    this.branchError.set(null);
+    this.streetError.set(null);
+
+    this.form.markAllAsTouched();
+
+    const method = this.deliveryMethod();
+    const value = this.form.getRawValue();
+
+    if (this.form.invalid) {
+      return;
+    }
+
+    let payload: PlaceOrderRequest;
+
+    if (method === 'pickup') {
+      payload = {
+        firstName: value.firstName.trim(),
+        lastName: value.lastName.trim(),
+        phone: normalizePhone(value.phone.trim()),
+        email: value.email.trim(),
+        deliveryMethod: 'pickup',
+        cityId: '',
+        cityName: '',
+        cityRegion: null,
+        branchId: '',
+        branchLabel: '',
+        streetAddress: null,
+        deliveryAddress: '',
+        comment: value.comment.trim() || null,
+      };
+    } else if (method === 'ukrposhta') {
+      const street = this.streetAddress().trim();
+      if (!street) {
+        this.streetError.set(this.i18n.translate('checkout.reqStreet'));
+        return;
+      }
+      payload = {
+        firstName: value.firstName.trim(),
+        lastName: value.lastName.trim(),
+        phone: normalizePhone(value.phone.trim()),
+        email: value.email.trim(),
+        deliveryMethod: 'ukrposhta',
+        cityId: '',
+        cityName: '',
+        cityRegion: null,
+        branchId: '',
+        branchLabel: '',
+        streetAddress: street,
+        deliveryAddress: '',
+        comment: value.comment.trim() || null,
+      };
+    } else {
+      const city = this.selectedCity();
+      const branchId = this.selectedBranchId();
+      let branch = this.branches().find((b) => b.branchId === branchId);
+      const saved = this.savedAddress();
+      if (!branch && saved && !this.editingDelivery() && saved.branchId === branchId) {
+        branch = { branchId: saved.branchId, label: saved.branchLabel };
+      }
+
+      if (!city) {
+        this.cityError.set(this.i18n.translate('checkout.pickCityList'));
+        this.editingDelivery.set(true);
+      }
+      if (!branch) {
+        this.branchError.set(this.i18n.translate('checkout.pickBranch'));
+        this.editingDelivery.set(true);
+      }
+
+      if (!city || !branch) {
+        return;
+      }
+
+      const deliveryAddress =
+        saved && !this.editingDelivery()
+          ? saved.summary
+          : `${city.cityName}, ${branch.label}`;
+
+      payload = {
+        firstName: value.firstName.trim(),
+        lastName: value.lastName.trim(),
+        phone: normalizePhone(value.phone.trim()),
+        email: value.email.trim(),
+        deliveryMethod: 'nova-poshta',
+        cityId: city.cityId,
+        cityName: city.cityName,
+        cityRegion: city.region ?? null,
+        branchId: branch.branchId,
+        branchLabel: branch.label,
+        streetAddress: null,
+        deliveryAddress,
+        comment: value.comment.trim() || null,
+      };
+    }
+
+    this.submitting.set(true);
+    this.form.disable({ emitEvent: false });
+
+    this.orders
+      .placeOrder(payload)
+      .pipe(
+        takeUntilDestroyed(this.destroyRef),
+        finalize(() => {
+          this.submitting.set(false);
+          this.form.enable({ emitEvent: false });
+        }),
+      )
+      .subscribe({
+        next: (response) => {
+          if (!response.success || !response.data) {
+            this.toasts.error(response.error ?? this.i18n.translate('checkout.placeError'));
+            return;
+          }
+          this.cart.resetLocalState();
+          void this.router.navigate(this.locale.commands('order', response.data.id), {
+            queryParams: { token: response.data.confirmationToken },
+          });
+        },
+        error: (err: unknown) => {
+          this.toasts.error(extractApiError(err, this.i18n.translate('checkout.placeError')));
+        },
+      });
+  }
+
+  private bootstrap(): void {
+    this.cart
+      .loadCart()
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: (response) => {
+          if (response.success && response.data && (response.data.items?.length ?? 0) === 0) {
+            void this.router.navigate(this.locale.commands('cart'));
+            return;
+          }
+        },
+      });
+
+    if (!this.auth.isAuthenticated()) {
+      this.prefillReady.set(true);
+      this.editingDelivery.set(true);
+      return;
+    }
+
+    forkJoin({
+      me: this.auth.me(),
+      address: this.auth.getDeliveryAddress(),
+    })
+      .pipe(
+        takeUntilDestroyed(this.destroyRef),
+        finalize(() => this.prefillReady.set(true)),
+      )
+      .subscribe({
+        next: ({ me, address }) => {
+          if (me.success && me.data) {
+            this.form.patchValue({
+              firstName: me.data.firstName ?? '',
+              lastName: me.data.lastName ?? '',
+              phone: me.data.phone ?? '',
+              email: me.data.email ?? '',
+            });
+          }
+          if (address.success && address.data) {
+            this.applySavedAddress(address.data);
+          } else {
+            this.editingDelivery.set(true);
+          }
+        },
+        error: () => {
+          this.editingDelivery.set(true);
+        },
+      });
+  }
+
+  private applySavedAddress(saved: DeliveryAddressDto): void {
+    this.savedAddress.set(saved);
+    this.editingDelivery.set(false);
+    this.cityQuery.set(saved.cityName);
+    this.selectedCity.set({
+      cityId: saved.cityId,
+      cityName: saved.cityName,
+      region: saved.cityRegion,
+    });
+    this.selectedBranchId.set(saved.branchId);
+    this.loadBranches(saved.cityId, saved.branchId);
+  }
+
+  private loadBranches(cityId: string, preferBranchId?: string): void {
+    this.branchesLoading.set(true);
+    this.shipping
+      .getBranches(cityId)
+      .pipe(
+        takeUntilDestroyed(this.destroyRef),
+        finalize(() => this.branchesLoading.set(false)),
+      )
+      .subscribe({
+        next: (response) => {
+          if (response.success && response.data) {
+            this.branches.set(response.data);
+            if (preferBranchId && response.data.some((b) => b.branchId === preferBranchId)) {
+              this.selectedBranchId.set(preferBranchId);
+            }
+          } else {
+            this.branches.set([]);
+            this.toasts.error(response.error ?? this.i18n.translate('checkout.loadBranchesError'));
+          }
+        },
+        error: () => {
+          this.branches.set([]);
+          this.toasts.error(this.i18n.translate('checkout.loadBranchesError'));
+        },
+      });
+  }
+}
