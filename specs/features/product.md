@@ -34,7 +34,7 @@ Full-stack: ASP.NET Core API + Angular UI + PostgreSQL data access.
 ## References
 
 - Claude Design: `design/product.dc.html`
-- Design system: `design/_ds/faino-naturalno-design-system-69873b7b-f6fd-41c1-a506-a953191d246d/`
+- Design system: `design/_ds/maistrynia-design-system-69873b7b-f6fd-41c1-a506-a953191d246d/`
 - Product overview: `SPEC.md`
 - Models: `specs/models.md`
 - API conventions: `specs/api.md`

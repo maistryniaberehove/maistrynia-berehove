@@ -6,7 +6,7 @@ public sealed class EmailOptions
 
     /// <summary>
     /// From address for outbound mail.
-    /// Format: <c>Файно натурально &lt;noreply@f-n.fun&gt;</c> or a bare email.
+    /// Format: <c>Майстриня &lt;noreply@maistrynia.local&gt;</c> or a bare email.
     /// </summary>
-    public string From { get; set; } = "Файно натурально <noreply@fayno.local>";
+    public string From { get; set; } = "Майстриня <noreply@maistrynia.local>";
 }

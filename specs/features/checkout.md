@@ -38,7 +38,7 @@ Full-stack: ASP.NET Core API + Angular UI + PostgreSQL data access.
 ## References
 
 - Claude Design: `design/checkout.dc.html`
-- Design system: `design/_ds/faino-naturalno-design-system-69873b7b-f6fd-41c1-a506-a953191d246d/`
+- Design system: `design/_ds/maistrynia-design-system-69873b7b-f6fd-41c1-a506-a953191d246d/`
 - Product overview: `SPEC.md` (guest checkout без реєстрації; пріоритет після cart)
 - Models: `specs/models.md` (Order, OrderItem, UserDeliveryAddress)
 - API conventions: `specs/api.md` (Orders)
@@ -202,7 +202,7 @@ The pages are public for guests and logged-in buyers. There is no admin checkout
 
 ### 2.2 Page chrome and copy
 
-- Eyebrow / context: «Файно натурально — оформлення»
+- Eyebrow / context: «Майстриня — оформлення»
 - Title: «Оформлення замовлення» (mobile top bar may shorten to «Оформлення»)
 - Supporting line may explain form left / summary right (desktop design); keep customer-facing labels Ukrainian from the design
 - Visual language: warm kraft / espresso / marigold, shared design-system inputs, buttons, icons

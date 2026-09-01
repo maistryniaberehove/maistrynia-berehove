@@ -44,8 +44,8 @@ import { sanitizeImageUrl } from '../../utils/sanitize-image-url';
 type PageStatus = 'loading' | 'ready' | 'not-found' | 'error';
 type CartUiStatus = 'idle' | 'adding' | 'added';
 
-const PRODUCT_JSON_LD_ID = 'fayno-product-jsonld';
-const BREADCRUMB_JSON_LD_ID = 'fayno-breadcrumb-jsonld';
+const PRODUCT_JSON_LD_ID = 'maistrynia-product-jsonld';
+const BREADCRUMB_JSON_LD_ID = 'maistrynia-breadcrumb-jsonld';
 
 @Component({
   selector: 'app-product',

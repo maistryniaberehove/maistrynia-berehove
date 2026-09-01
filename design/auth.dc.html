@@ -12,13 +12,13 @@
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 
-<link rel="stylesheet" href="_ds/faino-naturalno-design-system-69873b7b-f6fd-41c1-a506-a953191d246d/tokens/fonts.css">
-<link rel="stylesheet" href="_ds/faino-naturalno-design-system-69873b7b-f6fd-41c1-a506-a953191d246d/tokens/colors.css">
-<link rel="stylesheet" href="_ds/faino-naturalno-design-system-69873b7b-f6fd-41c1-a506-a953191d246d/tokens/typography.css">
-<link rel="stylesheet" href="_ds/faino-naturalno-design-system-69873b7b-f6fd-41c1-a506-a953191d246d/tokens/spacing.css">
-<link rel="stylesheet" href="_ds/faino-naturalno-design-system-69873b7b-f6fd-41c1-a506-a953191d246d/tokens/base.css">
-<link rel="stylesheet" href="_ds/faino-naturalno-design-system-69873b7b-f6fd-41c1-a506-a953191d246d/styles.css">
-<script src="_ds/faino-naturalno-design-system-69873b7b-f6fd-41c1-a506-a953191d246d/_ds_bundle.js"></script>
+<link rel="stylesheet" href="_ds/maistrynia-design-system-69873b7b-f6fd-41c1-a506-a953191d246d/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/maistrynia-design-system-69873b7b-f6fd-41c1-a506-a953191d246d/tokens/colors.css">
+<link rel="stylesheet" href="_ds/maistrynia-design-system-69873b7b-f6fd-41c1-a506-a953191d246d/tokens/typography.css">
+<link rel="stylesheet" href="_ds/maistrynia-design-system-69873b7b-f6fd-41c1-a506-a953191d246d/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/maistrynia-design-system-69873b7b-f6fd-41c1-a506-a953191d246d/tokens/base.css">
+<link rel="stylesheet" href="_ds/maistrynia-design-system-69873b7b-f6fd-41c1-a506-a953191d246d/styles.css">
+<script src="_ds/maistrynia-design-system-69873b7b-f6fd-41c1-a506-a953191d246d/_ds_bundle.js"></script>
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 <style>
 .auth-link { font-family: var(--font-body); font-weight: var(--fw-semibold); color: var(--cinnamon-700); cursor: pointer; }
@@ -49,18 +49,18 @@
         <p style="margin:0 0 28px;color:var(--espresso-700);text-align:center;">Увійдіть, щоб продовжити покупки смачного</p>
 
         <div style="width:100%;display:flex;flex-direction:column;gap:16px;">
-          <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Input" label="Ел. пошта" type="email" placeholder="olena@example.com" hint-size="100%,72px"></x-import>
+          <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Input" label="Ел. пошта" type="email" placeholder="olena@example.com" hint-size="100%,72px"></x-import>
           <div style="display:flex;flex-direction:column;gap:6px;width:100%;">
             <div style="display:flex;align-items:center;justify-content:space-between;">
               <label style="font-family:var(--font-body);font-weight:var(--fw-semibold);font-size:var(--text-sm);color:var(--espresso-800);">Пароль</label>
               <span class="auth-link" style="font-size:var(--text-sm);">Забули пароль?</span>
             </div>
-            <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Input" type="password" placeholder="••••••••" hint-size="100%,48px"></x-import>
+            <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Input" type="password" placeholder="••••••••" hint-size="100%,48px"></x-import>
           </div>
         </div>
 
         <div style="width:100%;margin-top:24px;">
-          <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Button" size="lg" full="{{ true }}" hint-size="100%,54px">Увійти</x-import>
+          <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Button" size="lg" full="{{ true }}" hint-size="100%,54px">Увійти</x-import>
         </div>
 
         <div style="width:100%;display:flex;align-items:center;gap:14px;margin:24px 0;">
@@ -86,16 +86,16 @@
 
         <div style="width:100%;display:flex;flex-direction:column;gap:16px;">
           <div style="display:flex;gap:14px;">
-            <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Input" label="Ім'я" placeholder="Олена" hint-size="100%,72px"></x-import>
-            <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Input" label="Прізвище" placeholder="Коваль" hint-size="100%,72px"></x-import>
+            <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Input" label="Ім'я" placeholder="Олена" hint-size="100%,72px"></x-import>
+            <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Input" label="Прізвище" placeholder="Коваль" hint-size="100%,72px"></x-import>
           </div>
-          <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Input" label="Ел. пошта" type="email" placeholder="olena@example.com" hint-size="100%,72px"></x-import>
-          <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Input" label="Пароль" type="password" placeholder="Мінімум 8 символів" hint-size="100%,72px"></x-import>
-          <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Input" label="Підтвердіть пароль" type="password" placeholder="••••••••" hint-size="100%,72px"></x-import>
+          <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Input" label="Ел. пошта" type="email" placeholder="olena@example.com" hint-size="100%,72px"></x-import>
+          <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Input" label="Пароль" type="password" placeholder="Мінімум 8 символів" hint-size="100%,72px"></x-import>
+          <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Input" label="Підтвердіть пароль" type="password" placeholder="••••••••" hint-size="100%,72px"></x-import>
         </div>
 
         <div style="width:100%;margin-top:24px;">
-          <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Button" size="lg" full="{{ true }}" hint-size="100%,54px">Зареєструватись</x-import>
+          <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Button" size="lg" full="{{ true }}" hint-size="100%,54px">Зареєструватись</x-import>
         </div>
 
         <p style="margin:24px 0 0;color:var(--espresso-700);text-align:center;">Вже маєте акаунт? <span class="auth-link">Увійти</span></p>
@@ -124,7 +124,7 @@
           </div>
 
           <button type="button" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px;background:none;border:none;cursor:pointer;font-family:var(--font-body);font-weight:var(--fw-semibold);font-size:var(--text-sm);color:var(--chili-500);">
-            <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Icon" name="log-out" size="17" hint-size="17px,17px"></x-import>
+            <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Icon" name="log-out" size="17" hint-size="17px,17px"></x-import>
             Вийти
           </button>
         </div>
@@ -137,13 +137,13 @@
             <h3 style="margin:0 0 22px;font-size:var(--text-lg);">Редагувати профіль</h3>
             <div style="display:flex;flex-direction:column;gap:16px;">
               <div style="display:flex;gap:14px;">
-                <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Input" label="Ім'я" value="Олена" hint-size="100%,72px"></x-import>
-                <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Input" label="Прізвище" value="Коваль" hint-size="100%,72px"></x-import>
+                <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Input" label="Ім'я" value="Олена" hint-size="100%,72px"></x-import>
+                <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Input" label="Прізвище" value="Коваль" hint-size="100%,72px"></x-import>
               </div>
-              <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Input" label="Телефон" type="tel" value="+38 (095) 348 85 36" hint-size="100%,72px"></x-import>
+              <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Input" label="Телефон" type="tel" value="+38 (095) 348 85 36" hint-size="100%,72px"></x-import>
             </div>
             <div style="margin-top:24px;">
-              <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Button" hint-size="auto,48px">Зберегти зміни</x-import>
+              <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Button" hint-size="auto,48px">Зберегти зміни</x-import>
             </div>
           </div>
 
@@ -162,7 +162,7 @@
             <sc-if value="{{ pwdCollapsed }}" hint-placeholder-val="{{ true }}">
               <div style="display:flex;align-items:center;gap:14px;padding:16px 18px;background:var(--surface-cream);border:var(--border-width) solid var(--border-subtle);border-radius:var(--radius-md);">
                 <span style="width:38px;height:38px;flex:0 0 38px;border-radius:var(--radius-sm);background:var(--kraft-100);display:flex;align-items:center;justify-content:center;color:var(--cinnamon-700);">
-                  <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Icon" name="lock" size="18" hint-size="18px,18px"></x-import>
+                  <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Icon" name="lock" size="18" hint-size="18px,18px"></x-import>
                 </span>
                 <div style="flex:1;min-width:0;">
                   <span style="display:block;font-family:var(--font-body);font-weight:var(--fw-bold);color:var(--espresso-900);">••••••••••</span>
@@ -173,9 +173,9 @@
 
             <sc-if value="{{ pwdOpen }}" hint-placeholder-val="{{ false }}">
               <div style="display:flex;flex-direction:column;gap:16px;">
-                <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Input" label="Поточний пароль" type="password" placeholder="••••••••" hint-size="100%,72px"></x-import>
+                <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Input" label="Поточний пароль" type="password" placeholder="••••••••" hint-size="100%,72px"></x-import>
                 <div style="display:flex;flex-direction:column;gap:8px;">
-                  <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Input" label="Новий пароль" type="password" value="{{ newPwd }}" onInput="{{ setNewPwd }}" placeholder="Мінімум 8 символів" hint-size="100%,72px"></x-import>
+                  <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Input" label="Новий пароль" type="password" value="{{ newPwd }}" onInput="{{ setNewPwd }}" placeholder="Мінімум 8 символів" hint-size="100%,72px"></x-import>
                   <div style="display:flex;align-items:center;gap:10px;">
                     <span style="flex:1;height:5px;border-radius:999px;background:var(--kraft-200);overflow:hidden;">
                       <span style="display:block;height:100%;width:{{ pwdBarW }};background:{{ pwdBarColor }};border-radius:999px;transition:width var(--dur) var(--ease-out);"></span>
@@ -183,10 +183,10 @@
                     <span style="font-size:var(--text-xs);font-weight:var(--fw-semibold);color:{{ pwdBarColor }};white-space:nowrap;">{{ pwdLabel }}</span>
                   </div>
                 </div>
-                <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Input" label="Підтвердіть новий пароль" type="password" placeholder="••••••••" hint-size="100%,72px"></x-import>
+                <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Input" label="Підтвердіть новий пароль" type="password" placeholder="••••••••" hint-size="100%,72px"></x-import>
                 <div style="display:flex;gap:12px;margin-top:4px;">
-                  <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Button" onClick="{{ closePwd }}" hint-size="auto,48px">Оновити пароль</x-import>
-                  <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Button" variant="ghost" onClick="{{ closePwd }}" hint-size="auto,48px">Скасувати</x-import>
+                  <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Button" onClick="{{ closePwd }}" hint-size="auto,48px">Оновити пароль</x-import>
+                  <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Button" variant="ghost" onClick="{{ closePwd }}" hint-size="auto,48px">Скасувати</x-import>
                 </div>
               </div>
             </sc-if>
@@ -208,7 +208,7 @@
             <sc-if value="{{ showSavedAddr }}" hint-placeholder-val="{{ true }}">
               <div style="display:flex;align-items:flex-start;gap:14px;padding:18px;background:var(--surface-cream);border:var(--border-width) solid var(--border-subtle);border-radius:var(--radius-md);">
                 <div style="width:42px;height:42px;flex:0 0 42px;border-radius:var(--radius-sm);background:var(--marigold-100);display:flex;align-items:center;justify-content:center;color:var(--cinnamon-700);">
-                  <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Icon" name="truck" size="20" hint-size="20px,20px"></x-import>
+                  <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Icon" name="truck" size="20" hint-size="20px,20px"></x-import>
                 </div>
                 <div style="flex:1;min-width:0;">
                   <span style="display:block;font-family:var(--font-body);font-weight:var(--fw-bold);color:var(--espresso-900);margin-bottom:2px;">Нова Пошта</span>
@@ -225,7 +225,7 @@
                   <label style="font-family:var(--font-body);font-weight:var(--fw-semibold);font-size:var(--text-sm);color:var(--espresso-800);">Місто</label>
                   <div style="position:relative;">
                     <span style="position:absolute;left:14px;top:50%;transform:translateY(-50%);pointer-events:none;color:var(--kraft-500);display:inline-flex;">
-                      <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Icon" name="search" size="17" hint-size="17px,17px"></x-import>
+                      <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Icon" name="search" size="17" hint-size="17px,17px"></x-import>
                     </span>
                     <input type="text" value="{{ cityQuery }}" onInput="{{ onCityInput }}" placeholder="Почніть вводити місто…" style="width:100%;padding:12px 14px 12px 42px;font-family:var(--font-body);font-size:var(--text-base);color:var(--espresso-800);background:var(--white);border:var(--border-width) solid var(--border-strong);border-radius:var(--radius-md);outline:none;">
                   </div>
@@ -233,7 +233,7 @@
                     <div style="position:absolute;top:100%;left:0;right:0;z-index:20;margin-top:6px;background:var(--white);border:var(--border-width) solid var(--border-subtle);border-radius:var(--radius-md);box-shadow:var(--shadow-lg);overflow:hidden;max-height:220px;overflow-y:auto;">
                       <sc-for list="{{ cityMatches }}" as="ct" hint-placeholder-count="4">
                         <button type="button" onClick="{{ ct.pick }}" style="display:flex;align-items:center;gap:10px;width:100%;padding:12px 16px;background:none;border:none;border-bottom:var(--border-width) solid var(--border-subtle);cursor:pointer;text-align:left;font-family:var(--font-body);font-size:var(--text-base);color:var(--espresso-800);">
-                          <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Icon" name="map-pin" size="16" color="var(--kraft-500)" hint-size="16px,16px"></x-import>
+                          <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Icon" name="map-pin" size="16" color="var(--kraft-500)" hint-size="16px,16px"></x-import>
                           <span style="flex:1;">{{ ct.name }}</span>
                           <span style="font-size:var(--text-xs);color:var(--text-muted);">{{ ct.region }}</span>
                         </button>
@@ -256,15 +256,15 @@
                       </sc-for>
                     </select>
                     <span style="position:absolute;right:14px;top:50%;transform:translateY(-50%);pointer-events:none;display:inline-flex;color:var(--espresso-700);">
-                      <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Icon" name="chevron-down" size="16" hint-size="16px,16px"></x-import>
+                      <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Icon" name="chevron-down" size="16" hint-size="16px,16px"></x-import>
                     </span>
                   </div>
                 </div>
 
                 <div style="display:flex;gap:12px;margin-top:4px;">
-                  <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Button" onClick="{{ saveAddr }}" disabled="{{ saveDisabled }}" hint-size="auto,48px">Зберегти адресу</x-import>
+                  <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Button" onClick="{{ saveAddr }}" disabled="{{ saveDisabled }}" hint-size="auto,48px">Зберегти адресу</x-import>
                   <sc-if value="{{ addrSaved }}" hint-placeholder-val="{{ false }}">
-                    <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Button" variant="ghost" onClick="{{ cancelAddr }}" hint-size="auto,48px">Скасувати</x-import>
+                    <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Button" variant="ghost" onClick="{{ cancelAddr }}" hint-size="auto,48px">Скасувати</x-import>
                   </sc-if>
                 </div>
               </div>
@@ -278,14 +278,14 @@
               <sc-for list="{{ orders }}" as="o" hint-placeholder-count="3">
                 <div style="display:flex;align-items:center;gap:16px;padding:16px 18px;background:var(--surface-cream);border:var(--border-width) solid var(--border-subtle);border-radius:var(--radius-md);">
                   <div style="width:42px;height:42px;flex:0 0 42px;border-radius:var(--radius-sm);background:var(--kraft-100);display:flex;align-items:center;justify-content:center;color:var(--cinnamon-700);">
-                    <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Icon" name="package" size="20" hint-size="20px,20px"></x-import>
+                    <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Icon" name="package" size="20" hint-size="20px,20px"></x-import>
                   </div>
                   <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px;">
                     <span style="font-family:var(--font-body);font-weight:var(--fw-bold);color:var(--espresso-900);">{{ o.num }}</span>
                     <span style="font-size:var(--text-sm);color:var(--text-muted);">{{ o.meta }}</span>
                   </div>
                   <span style="font-family:var(--font-accent);font-size:var(--text-lg);color:var(--espresso-800);white-space:nowrap;">{{ o.total }}</span>
-                  <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Badge" tone="{{ o.tone }}" hint-size="auto,auto">{{ o.status }}</x-import>
+                  <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Badge" tone="{{ o.tone }}" hint-size="auto,auto">{{ o.status }}</x-import>
                 </div>
               </sc-for>
             </div>
@@ -308,12 +308,12 @@
         <h2 style="margin:0 0 6px;font-size:var(--text-xl);text-align:center;">З поверненням!</h2>
         <p style="margin:0 0 24px;color:var(--espresso-700);text-align:center;font-size:var(--text-sm);">Увійдіть, щоб продовжити покупки</p>
         <div style="width:100%;display:flex;flex-direction:column;gap:14px;">
-          <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Input" label="Ел. пошта" type="email" placeholder="olena@example.com" hint-size="100%,72px"></x-import>
-          <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Input" label="Пароль" type="password" placeholder="••••••••" hint-size="100%,72px"></x-import>
+          <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Input" label="Ел. пошта" type="email" placeholder="olena@example.com" hint-size="100%,72px"></x-import>
+          <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Input" label="Пароль" type="password" placeholder="••••••••" hint-size="100%,72px"></x-import>
           <span class="auth-link" style="font-size:var(--text-sm);align-self:flex-end;">Забули пароль?</span>
         </div>
         <div style="width:100%;margin-top:20px;">
-          <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Button" size="lg" full="{{ true }}" hint-size="100%,54px">Увійти</x-import>
+          <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Button" size="lg" full="{{ true }}" hint-size="100%,54px">Увійти</x-import>
         </div>
         <div style="width:100%;display:flex;align-items:center;gap:12px;margin:20px 0;">
           <span style="flex:1;height:1.5px;background:var(--border-subtle);"></span>
@@ -335,15 +335,15 @@
         <p style="margin:0 0 24px;color:var(--espresso-700);text-align:center;font-size:var(--text-sm);">Створіть акаунт за хвилину</p>
         <div style="width:100%;display:flex;flex-direction:column;gap:14px;">
           <div style="display:flex;gap:12px;">
-            <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Input" label="Ім'я" placeholder="Олена" hint-size="100%,72px"></x-import>
-            <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Input" label="Прізвище" placeholder="Коваль" hint-size="100%,72px"></x-import>
+            <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Input" label="Ім'я" placeholder="Олена" hint-size="100%,72px"></x-import>
+            <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Input" label="Прізвище" placeholder="Коваль" hint-size="100%,72px"></x-import>
           </div>
-          <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Input" label="Ел. пошта" type="email" placeholder="olena@example.com" hint-size="100%,72px"></x-import>
-          <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Input" label="Пароль" type="password" placeholder="Мінімум 8 символів" hint-size="100%,72px"></x-import>
-          <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Input" label="Підтвердіть пароль" type="password" placeholder="••••••••" hint-size="100%,72px"></x-import>
+          <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Input" label="Ел. пошта" type="email" placeholder="olena@example.com" hint-size="100%,72px"></x-import>
+          <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Input" label="Пароль" type="password" placeholder="Мінімум 8 символів" hint-size="100%,72px"></x-import>
+          <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Input" label="Підтвердіть пароль" type="password" placeholder="••••••••" hint-size="100%,72px"></x-import>
         </div>
         <div style="width:100%;margin-top:20px;">
-          <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Button" size="lg" full="{{ true }}" hint-size="100%,54px">Зареєструватись</x-import>
+          <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Button" size="lg" full="{{ true }}" hint-size="100%,54px">Зареєструватись</x-import>
         </div>
         <p style="margin:20px 0 0;color:var(--espresso-700);text-align:center;font-size:var(--text-sm);">Вже маєте акаунт? <span class="auth-link">Увійти</span></p>
       </div>
@@ -365,10 +365,10 @@
 
         <span class="fn-eyebrow" style="display:block;margin-bottom:14px;">Особисті дані</span>
         <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:16px;">
-          <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Input" label="Ім'я" value="Олена" hint-size="100%,72px"></x-import>
-          <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Input" label="Телефон" type="tel" value="+38 (095) 348 85 36" hint-size="100%,72px"></x-import>
+          <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Input" label="Ім'я" value="Олена" hint-size="100%,72px"></x-import>
+          <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Input" label="Телефон" type="tel" value="+38 (095) 348 85 36" hint-size="100%,72px"></x-import>
         </div>
-        <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Button" full="{{ true }}" hint-size="100%,48px">Зберегти зміни</x-import>
+        <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Button" full="{{ true }}" hint-size="100%,48px">Зберегти зміни</x-import>
 
         <div style="height:1.5px;background:var(--border-subtle);margin:24px 0;"></div>
 
@@ -381,7 +381,7 @@
         <sc-if value="{{ showSavedAddr }}" hint-placeholder-val="{{ true }}">
           <div style="display:flex;align-items:flex-start;gap:12px;padding:14px;background:var(--surface-cream);border:var(--border-width) solid var(--border-subtle);border-radius:var(--radius-md);">
             <span style="color:var(--cinnamon-700);display:inline-flex;margin-top:2px;">
-              <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Icon" name="truck" size="18" hint-size="18px,18px"></x-import>
+              <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Icon" name="truck" size="18" hint-size="18px,18px"></x-import>
             </span>
             <div style="flex:1;min-width:0;">
               <span style="display:block;font-family:var(--font-body);font-weight:var(--fw-bold);font-size:var(--text-sm);color:var(--espresso-900);margin-bottom:2px;">Нова Пошта</span>
@@ -395,7 +395,7 @@
               <label style="font-family:var(--font-body);font-weight:var(--fw-semibold);font-size:var(--text-sm);color:var(--espresso-800);">Місто</label>
               <div style="position:relative;">
                 <span style="position:absolute;left:14px;top:50%;transform:translateY(-50%);pointer-events:none;color:var(--kraft-500);display:inline-flex;">
-                  <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Icon" name="search" size="17" hint-size="17px,17px"></x-import>
+                  <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Icon" name="search" size="17" hint-size="17px,17px"></x-import>
                 </span>
                 <input type="text" value="{{ cityQuery }}" onInput="{{ onCityInput }}" placeholder="Почніть вводити місто…" style="width:100%;padding:12px 14px 12px 42px;font-family:var(--font-body);font-size:var(--text-base);color:var(--espresso-800);background:var(--white);border:var(--border-width) solid var(--border-strong);border-radius:var(--radius-md);outline:none;min-height:48px;">
               </div>
@@ -403,7 +403,7 @@
                 <div style="position:absolute;top:100%;left:0;right:0;z-index:20;margin-top:6px;background:var(--white);border:var(--border-width) solid var(--border-subtle);border-radius:var(--radius-md);box-shadow:var(--shadow-lg);overflow:hidden;max-height:200px;overflow-y:auto;">
                   <sc-for list="{{ cityMatches }}" as="ct" hint-placeholder-count="4">
                     <button type="button" onClick="{{ ct.pick }}" style="display:flex;align-items:center;gap:10px;width:100%;padding:12px 16px;background:none;border:none;border-bottom:var(--border-width) solid var(--border-subtle);cursor:pointer;text-align:left;font-family:var(--font-body);font-size:var(--text-base);color:var(--espresso-800);min-height:48px;">
-                      <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Icon" name="map-pin" size="16" color="var(--kraft-500)" hint-size="16px,16px"></x-import>
+                      <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Icon" name="map-pin" size="16" color="var(--kraft-500)" hint-size="16px,16px"></x-import>
                       <span style="flex:1;">{{ ct.name }}</span>
                     </button>
                   </sc-for>
@@ -423,11 +423,11 @@
                   </sc-for>
                 </select>
                 <span style="position:absolute;right:14px;top:50%;transform:translateY(-50%);pointer-events:none;display:inline-flex;color:var(--espresso-700);">
-                  <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Icon" name="chevron-down" size="16" hint-size="16px,16px"></x-import>
+                  <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Icon" name="chevron-down" size="16" hint-size="16px,16px"></x-import>
                 </span>
               </div>
             </div>
-            <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Button" full="{{ true }}" onClick="{{ saveAddr }}" disabled="{{ saveDisabled }}" hint-size="100%,48px">Зберегти адресу</x-import>
+            <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Button" full="{{ true }}" onClick="{{ saveAddr }}" disabled="{{ saveDisabled }}" hint-size="100%,48px">Зберегти адресу</x-import>
           </div>
         </sc-if>
 
@@ -438,14 +438,14 @@
         </div>
         <button type="button" style="display:flex;align-items:center;gap:12px;width:100%;padding:14px;background:var(--surface-cream);border:var(--border-width) solid var(--border-subtle);border-radius:var(--radius-md);cursor:pointer;text-align:left;min-height:56px;">
           <span style="width:34px;height:34px;flex:0 0 34px;border-radius:var(--radius-sm);background:var(--kraft-100);display:flex;align-items:center;justify-content:center;color:var(--cinnamon-700);">
-            <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Icon" name="lock" size="17" hint-size="17px,17px"></x-import>
+            <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Icon" name="lock" size="17" hint-size="17px,17px"></x-import>
           </span>
           <div style="flex:1;min-width:0;">
             <span style="display:block;font-family:var(--font-body);font-weight:var(--fw-bold);font-size:var(--text-sm);color:var(--espresso-900);">Змінити пароль</span>
             <span style="font-size:var(--text-xs);color:var(--text-muted);">Остання зміна — 12 травня</span>
           </div>
           <span style="color:var(--kraft-500);display:inline-flex;">
-            <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Icon" name="chevron-right" size="18" hint-size="18px,18px"></x-import>
+            <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Icon" name="chevron-right" size="18" hint-size="18px,18px"></x-import>
           </span>
         </button>
 
@@ -459,13 +459,13 @@
                 <span style="font-family:var(--font-body);font-weight:var(--fw-bold);font-size:var(--text-sm);color:var(--espresso-900);">{{ o.num }}</span>
                 <span style="font-size:var(--text-xs);color:var(--text-muted);">{{ o.total }}</span>
               </div>
-              <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Badge" tone="{{ o.tone }}" size="sm" hint-size="auto,auto">{{ o.status }}</x-import>
+              <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Badge" tone="{{ o.tone }}" size="sm" hint-size="auto,auto">{{ o.status }}</x-import>
             </div>
           </sc-for>
         </div>
 
         <button type="button" style="margin-top:24px;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px;background:none;border:none;cursor:pointer;font-family:var(--font-body);font-weight:var(--fw-semibold);font-size:var(--text-sm);color:var(--chili-500);min-height:44px;">
-          <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Icon" name="log-out" size="17" hint-size="17px,17px"></x-import>
+          <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Icon" name="log-out" size="17" hint-size="17px,17px"></x-import>
           Вийти
         </button>
       </div>
@@ -485,15 +485,15 @@
         <span style="font-size:var(--text-xs);color:var(--text-muted);text-transform:uppercase;letter-spacing:.08em;">1 · Запит на скидання</span>
         <div style="width:420px;padding:40px;background:var(--surface-card);border:var(--border-width) solid var(--border-subtle);border-radius:var(--radius-xl);box-shadow:var(--shadow-lg);display:flex;flex-direction:column;align-items:center;">
           <div style="width:72px;height:72px;border-radius:999px;background:var(--marigold-100);display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:var(--cinnamon-700);">
-            <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Icon" name="key-round" size="30" strokeWidth="1.5" hint-size="30px,30px"></x-import>
+            <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Icon" name="key-round" size="30" strokeWidth="1.5" hint-size="30px,30px"></x-import>
           </div>
           <h2 style="margin:0 0 8px;font-size:var(--text-xl);text-align:center;">Забули пароль?</h2>
           <p style="margin:0 0 24px;color:var(--espresso-700);text-align:center;font-size:var(--text-sm);">Вкажіть пошту — надішлемо посилання для відновлення.</p>
           <div style="width:100%;">
-            <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Input" label="Ел. пошта" type="email" placeholder="olena@example.com" hint-size="100%,72px"></x-import>
+            <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Input" label="Ел. пошта" type="email" placeholder="olena@example.com" hint-size="100%,72px"></x-import>
           </div>
           <div style="width:100%;margin-top:20px;">
-            <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Button" size="lg" full="{{ true }}" hint-size="100%,54px">Надіслати посилання</x-import>
+            <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Button" size="lg" full="{{ true }}" hint-size="100%,54px">Надіслати посилання</x-import>
           </div>
           <p style="margin:20px 0 0;text-align:center;"><span class="auth-link" style="font-size:var(--text-sm);">← Назад до входу</span></p>
         </div>
@@ -504,7 +504,7 @@
         <span style="font-size:var(--text-xs);color:var(--text-muted);text-transform:uppercase;letter-spacing:.08em;">2 · Лист надіслано</span>
         <div style="width:420px;padding:40px;background:var(--surface-card);border:var(--border-width) solid var(--border-subtle);border-radius:var(--radius-xl);box-shadow:var(--shadow-lg);display:flex;flex-direction:column;align-items:center;text-align:center;">
           <div style="width:72px;height:72px;border-radius:999px;background:var(--garden-100);display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:var(--garden-700);">
-            <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Icon" name="mail-check" size="30" strokeWidth="1.5" hint-size="30px,30px"></x-import>
+            <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Icon" name="mail-check" size="30" strokeWidth="1.5" hint-size="30px,30px"></x-import>
           </div>
           <h2 style="margin:0 0 8px;font-size:var(--text-xl);">Перевірте пошту</h2>
           <p style="margin:0 0 6px;color:var(--espresso-700);font-size:var(--text-sm);">Ми надіслали посилання для відновлення на</p>
@@ -512,7 +512,7 @@
           <div style="width:100%;padding:14px 16px;background:var(--surface-cream);border:var(--border-width) solid var(--border-subtle);border-radius:var(--radius-md);margin-bottom:20px;">
             <span style="font-size:var(--text-sm);color:var(--espresso-700);line-height:1.5;">Не бачите листа? Подивіться у папці «Спам» — посилання діє 60 хвилин.</span>
           </div>
-          <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Button" variant="secondary" full="{{ true }}" hint-size="100%,48px">Надіслати ще раз</x-import>
+          <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Button" variant="secondary" full="{{ true }}" hint-size="100%,48px">Надіслати ще раз</x-import>
           <p style="margin:18px 0 0;"><span class="auth-link" style="font-size:var(--text-sm);">← Назад до входу</span></p>
         </div>
       </div>
@@ -526,7 +526,7 @@
           <p style="margin:0 0 24px;color:var(--espresso-700);text-align:center;font-size:var(--text-sm);">Придумайте надійний пароль — мінімум 8 символів.</p>
           <div style="width:100%;display:flex;flex-direction:column;gap:16px;">
             <div style="display:flex;flex-direction:column;gap:8px;">
-              <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Input" label="Новий пароль" type="password" value="{{ resetPwd }}" onInput="{{ setResetPwd }}" placeholder="Мінімум 8 символів" hint-size="100%,72px"></x-import>
+              <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Input" label="Новий пароль" type="password" value="{{ resetPwd }}" onInput="{{ setResetPwd }}" placeholder="Мінімум 8 символів" hint-size="100%,72px"></x-import>
               <div style="display:flex;align-items:center;gap:10px;">
                 <span style="flex:1;height:5px;border-radius:999px;background:var(--kraft-200);overflow:hidden;">
                   <span style="display:block;height:100%;width:{{ resetBarW }};background:{{ resetBarColor }};border-radius:999px;transition:width var(--dur) var(--ease-out);"></span>
@@ -534,10 +534,10 @@
                 <span style="font-size:var(--text-xs);font-weight:var(--fw-semibold);color:{{ resetBarColor }};white-space:nowrap;">{{ resetLabel }}</span>
               </div>
             </div>
-            <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Input" label="Підтвердіть пароль" type="password" placeholder="••••••••" hint-size="100%,72px"></x-import>
+            <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Input" label="Підтвердіть пароль" type="password" placeholder="••••••••" hint-size="100%,72px"></x-import>
           </div>
           <div style="width:100%;margin-top:22px;">
-            <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Button" size="lg" full="{{ true }}" hint-size="100%,54px">Зберегти пароль</x-import>
+            <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Button" size="lg" full="{{ true }}" hint-size="100%,54px">Зберегти пароль</x-import>
           </div>
         </div>
       </div>
@@ -547,11 +547,11 @@
         <span style="font-size:var(--text-xs);color:var(--text-muted);text-transform:uppercase;letter-spacing:.08em;">4 · Готово</span>
         <div style="width:420px;padding:48px 40px;background:var(--surface-card);border:var(--border-width) solid var(--border-subtle);border-radius:var(--radius-xl);box-shadow:var(--shadow-lg);display:flex;flex-direction:column;align-items:center;text-align:center;">
           <div style="width:80px;height:80px;border-radius:999px;background:var(--garden-500);display:flex;align-items:center;justify-content:center;margin-bottom:22px;color:var(--white);">
-            <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Icon" name="check" size="38" hint-size="38px,38px"></x-import>
+            <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Icon" name="check" size="38" hint-size="38px,38px"></x-import>
           </div>
           <h2 style="margin:0 0 8px;font-size:var(--text-xl);">Пароль змінено</h2>
           <p style="margin:0 0 26px;color:var(--espresso-700);font-size:var(--text-sm);max-width:280px;">Тепер можна увійти з новим паролем.</p>
-          <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Button" size="lg" full="{{ true }}" hint-size="100%,54px">Увійти</x-import>
+          <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Button" size="lg" full="{{ true }}" hint-size="100%,54px">Увійти</x-import>
         </div>
       </div>
     </div>
@@ -573,18 +573,18 @@
             <label style="font-family:var(--font-body);font-weight:var(--fw-semibold);font-size:var(--text-sm);color:var(--espresso-800);">Місто</label>
             <div style="position:relative;">
               <span style="position:absolute;left:14px;top:50%;transform:translateY(-50%);pointer-events:none;color:var(--kraft-500);display:inline-flex;">
-                <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Icon" name="search" size="17" hint-size="17px,17px"></x-import>
+                <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Icon" name="search" size="17" hint-size="17px,17px"></x-import>
               </span>
               <input type="text" value="Льв" readonly style="width:100%;padding:12px 14px 12px 42px;font-family:var(--font-body);font-size:var(--text-base);color:var(--espresso-800);background:var(--white);border:var(--border-width) solid var(--marigold-400);border-radius:var(--radius-md);outline:none;">
             </div>
             <div style="position:absolute;top:100%;left:0;right:0;z-index:5;margin-top:6px;background:var(--white);border:var(--border-width) solid var(--border-subtle);border-radius:var(--radius-md);box-shadow:var(--shadow-lg);overflow:hidden;">
               <div style="display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:var(--border-width) solid var(--border-subtle);background:var(--surface-cream);">
-                <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Icon" name="map-pin" size="16" color="var(--cinnamon-700)" hint-size="16px,16px"></x-import>
+                <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Icon" name="map-pin" size="16" color="var(--cinnamon-700)" hint-size="16px,16px"></x-import>
                 <span style="flex:1;font-family:var(--font-body);font-size:var(--text-base);color:var(--espresso-900);font-weight:var(--fw-semibold);">Львів</span>
                 <span style="font-size:var(--text-xs);color:var(--text-muted);">Львівська обл.</span>
               </div>
               <div style="display:flex;align-items:center;gap:10px;padding:12px 16px;">
-                <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Icon" name="map-pin" size="16" color="var(--kraft-500)" hint-size="16px,16px"></x-import>
+                <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Icon" name="map-pin" size="16" color="var(--kraft-500)" hint-size="16px,16px"></x-import>
                 <span style="flex:1;font-family:var(--font-body);font-size:var(--text-base);color:var(--espresso-800);">Львів-Сокільники</span>
                 <span style="font-size:var(--text-xs);color:var(--text-muted);">Львівська обл.</span>
               </div>
@@ -597,13 +597,13 @@
             <div style="position:relative;">
               <div style="width:100%;padding:12px 40px 12px 16px;font-family:var(--font-body);font-size:var(--text-base);color:var(--espresso-800);background:var(--white);border:var(--border-width) solid var(--border-strong);border-radius:var(--radius-md);">Відділення №3: вул. Січових Стрільців, 30</div>
               <span style="position:absolute;right:14px;top:50%;transform:translateY(-50%);pointer-events:none;display:inline-flex;color:var(--espresso-700);">
-                <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Icon" name="chevron-down" size="16" hint-size="16px,16px"></x-import>
+                <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Icon" name="chevron-down" size="16" hint-size="16px,16px"></x-import>
               </span>
             </div>
           </div>
           <div style="display:flex;gap:12px;margin-top:4px;">
-            <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Button" hint-size="auto,48px">Зберегти адресу</x-import>
-            <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Button" variant="ghost" hint-size="auto,48px">Скасувати</x-import>
+            <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Button" hint-size="auto,48px">Зберегти адресу</x-import>
+            <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Button" variant="ghost" hint-size="auto,48px">Скасувати</x-import>
           </div>
         </div>
       </div>
@@ -623,7 +623,7 @@
             <label style="font-family:var(--font-body);font-weight:var(--fw-semibold);font-size:var(--text-sm);color:var(--espresso-800);">Місто</label>
             <div style="position:relative;">
               <span style="position:absolute;left:14px;top:50%;transform:translateY(-50%);pointer-events:none;color:var(--kraft-500);display:inline-flex;">
-                <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Icon" name="search" size="17" hint-size="17px,17px"></x-import>
+                <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Icon" name="search" size="17" hint-size="17px,17px"></x-import>
               </span>
               <input type="text" value="" readonly placeholder="Почніть вводити місто…" style="width:100%;padding:12px 14px 12px 42px;font-family:var(--font-body);font-size:var(--text-base);color:var(--espresso-800);background:var(--white);border:var(--border-width) solid var(--border-strong);border-radius:var(--radius-md);outline:none;">
             </div>
@@ -633,12 +633,12 @@
             <div style="position:relative;">
               <div style="width:100%;padding:12px 40px 12px 16px;font-family:var(--font-body);font-size:var(--text-base);color:var(--kraft-500);background:var(--kraft-100);border:var(--border-width) solid var(--border-strong);border-radius:var(--radius-md);">Спочатку оберіть місто</div>
               <span style="position:absolute;right:14px;top:50%;transform:translateY(-50%);pointer-events:none;display:inline-flex;color:var(--kraft-500);">
-                <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Icon" name="chevron-down" size="16" hint-size="16px,16px"></x-import>
+                <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Icon" name="chevron-down" size="16" hint-size="16px,16px"></x-import>
               </span>
             </div>
           </div>
           <div style="margin-top:4px;">
-            <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Button" disabled="{{ true }}" hint-size="auto,48px">Зберегти адресу</x-import>
+            <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Button" disabled="{{ true }}" hint-size="auto,48px">Зберегти адресу</x-import>
           </div>
         </div>
       </div>
@@ -657,12 +657,12 @@
 
       <div style="display:flex;align-items:flex-start;gap:14px;padding:18px;background:var(--marigold-50);border:var(--border-width) solid var(--marigold-300);border-radius:var(--radius-md);margin-bottom:16px;">
         <div style="width:42px;height:42px;flex:0 0 42px;border-radius:var(--radius-sm);background:var(--marigold-100);display:flex;align-items:center;justify-content:center;color:var(--cinnamon-700);">
-          <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Icon" name="truck" size="20" hint-size="20px,20px"></x-import>
+          <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Icon" name="truck" size="20" hint-size="20px,20px"></x-import>
         </div>
         <div style="flex:1;min-width:0;">
           <div style="display:flex;align-items:center;gap:8px;margin-bottom:2px;">
             <span style="font-family:var(--font-body);font-weight:var(--fw-bold);color:var(--espresso-900);">Нова Пошта</span>
-            <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Badge" tone="fresh" size="sm" hint-size="auto,auto">Збережена</x-import>
+            <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Badge" tone="fresh" size="sm" hint-size="auto,auto">Збережена</x-import>
           </div>
           <span style="font-size:var(--text-sm);color:var(--espresso-700);line-height:1.4;">{{ savedAddr }}</span>
         </div>

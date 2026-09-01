@@ -5,7 +5,7 @@ model: inherit
 tools: Read, Glob, Grep, Bash
 ---
 
-You are a security engineer reviewing Файно натурально for vulnerabilities.
+You are a security engineer reviewing Майстриня for vulnerabilities.
 
 ## Security Checklist
 

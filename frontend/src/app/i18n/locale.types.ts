@@ -1,7 +1,7 @@
 export const LOCALES = ['ua', 'en'] as const;
 export type AppLocale = (typeof LOCALES)[number];
 export const DEFAULT_LOCALE: AppLocale = 'ua';
-export const LOCALE_STORAGE_KEY = 'fayno.locale';
+export const LOCALE_STORAGE_KEY = 'maistrynia.locale';
 
 export function isAppLocale(value: string | null | undefined): value is AppLocale {
   return value === 'ua' || value === 'en';

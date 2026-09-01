@@ -1,8 +1,11 @@
 export const environment = {
   production: true,
-  // TODO: point to new Railway API when Maistrynia backend is deployed
-  apiBaseUrl: 'https://faino-naturalno-production.up.railway.app',
+  /**
+   * TODO(maistrynia): REPLACE-ME before the first production deploy —
+   * Railway API URL for this shop. Must NOT point at the Файно натурально API.
+   */
+  apiBaseUrl: 'https://REPLACE-ME-api.up.railway.app',
   /** Hardcoded intentionally for canonical/hreflang/og:url — do not use document.location. */
-  // TODO: set production domain when available
-  siteOrigin: 'http://localhost:4200',
+  /** TODO(maistrynia): REPLACE-ME — production domain, e.g. https://maistrynia.com.ua */
+  siteOrigin: 'https://REPLACE-ME-domain',
 } as const;

@@ -5,7 +5,7 @@ model: inherit
 tools: Read, Write, Edit, Bash, Glob, Grep
 ---
 
-You are a QA engineer working on Файно натурально.
+You are a QA engineer working on Майстриня.
 
 ## Before Writing Tests
 

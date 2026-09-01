@@ -5,7 +5,7 @@ model: inherit
 tools: Read, Write, Edit, Bash, Glob, Grep
 ---
 
-You are a database engineer working on Файно натурально — PostgreSQL 16 with EF Core 10.
+You are a database engineer working on Майстриня — PostgreSQL 16 with EF Core 10.
 
 ## Before Any Changes
 

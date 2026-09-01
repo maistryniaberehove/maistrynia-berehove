@@ -41,7 +41,7 @@ Full-stack: ASP.NET Core API + Angular UI + PostgreSQL data access.
 ## References
 
 - Claude Design: `design/auth.dc.html`
-- Design system: `design/_ds/faino-naturalno-design-system-69873b7b-f6fd-41c1-a506-a953191d246d/`
+- Design system: `design/_ds/maistrynia-design-system-69873b7b-f6fd-41c1-a506-a953191d246d/`
 - Product overview: `SPEC.md`
 - Models: `specs/models.md`
 - API conventions: `specs/api.md`
@@ -139,7 +139,7 @@ After success, the client merges the guest cart (session id) into the authentica
 
 | Setting | Purpose |
 |---------|---------|
-| `Email:From` | From address, e.g. `Файно натурально <noreply@f-n.fun>` |
+| `Email:From` | From address, e.g. `Майстриня <noreply@maistrynia.local>` |
 | `Resend:ApiToken` | Resend API token; **empty** → log-only stub (no inbox delivery) |
 
 - When `Resend:ApiToken` is set → `ResendEmailSender` delivers plain-text reset mail over HTTPS (works on Railway; SMTP ports are blocked there).

@@ -1,8 +1,8 @@
-/* @ds-bundle: {"format":4,"namespace":"FainoNaturalnoDesignSystem_69873b","components":[{"name":"PriceTag","sourcePath":"components/commerce/PriceTag.jsx"},{"name":"ProductCard","sourcePath":"components/commerce/ProductCard.jsx"},{"name":"Rating","sourcePath":"components/commerce/Rating.jsx"},{"name":"Badge","sourcePath":"components/core/Badge.jsx"},{"name":"Button","sourcePath":"components/core/Button.jsx"},{"name":"Icon","sourcePath":"components/core/Icon.jsx"},{"name":"IconButton","sourcePath":"components/core/IconButton.jsx"},{"name":"Tag","sourcePath":"components/core/Tag.jsx"},{"name":"Input","sourcePath":"components/forms/Input.jsx"},{"name":"QuantityStepper","sourcePath":"components/forms/QuantityStepper.jsx"},{"name":"Card","sourcePath":"components/layout/Card.jsx"},{"name":"SectionHeader","sourcePath":"components/layout/SectionHeader.jsx"}],"sourceHashes":{"components/commerce/PriceTag.jsx":"ca61ee57dd0a","components/commerce/ProductCard.jsx":"dc889b02962f","components/commerce/Rating.jsx":"96aba2b42687","components/core/Badge.jsx":"30ab2bbeb92a","components/core/Button.jsx":"e97af749f775","components/core/Icon.jsx":"b3a79f68690c","components/core/IconButton.jsx":"62b8df2f0150","components/core/Tag.jsx":"85fb3305db5f","components/forms/Input.jsx":"5727d4704353","components/forms/QuantityStepper.jsx":"9065cb805741","components/layout/Card.jsx":"49c213912207","components/layout/SectionHeader.jsx":"e8e6fe2ca973","ui_kits/shop/App.jsx":"102664f49add","ui_kits/shop/CartScreen.jsx":"9af9705253a7","ui_kits/shop/CategoryScreen.jsx":"5e22ab9f0304","ui_kits/shop/Footer.jsx":"ca891e2bd406","ui_kits/shop/Header.jsx":"7c7e36ef32eb","ui_kits/shop/HomeScreen.jsx":"8cacb30b0c6d","ui_kits/shop/ProductScreen.jsx":"5d7ade068d14","ui_kits/shop/products.js":"b41683f298a5"},"inlinedExternals":[],"unexposedExports":[]} */
+/* @ds-bundle: {"format":4,"namespace":"MaistryniaDesignSystem_69873b","components":[{"name":"PriceTag","sourcePath":"components/commerce/PriceTag.jsx"},{"name":"ProductCard","sourcePath":"components/commerce/ProductCard.jsx"},{"name":"Rating","sourcePath":"components/commerce/Rating.jsx"},{"name":"Badge","sourcePath":"components/core/Badge.jsx"},{"name":"Button","sourcePath":"components/core/Button.jsx"},{"name":"Icon","sourcePath":"components/core/Icon.jsx"},{"name":"IconButton","sourcePath":"components/core/IconButton.jsx"},{"name":"Tag","sourcePath":"components/core/Tag.jsx"},{"name":"Input","sourcePath":"components/forms/Input.jsx"},{"name":"QuantityStepper","sourcePath":"components/forms/QuantityStepper.jsx"},{"name":"Card","sourcePath":"components/layout/Card.jsx"},{"name":"SectionHeader","sourcePath":"components/layout/SectionHeader.jsx"}],"sourceHashes":{"components/commerce/PriceTag.jsx":"ca61ee57dd0a","components/commerce/ProductCard.jsx":"dc889b02962f","components/commerce/Rating.jsx":"96aba2b42687","components/core/Badge.jsx":"30ab2bbeb92a","components/core/Button.jsx":"e97af749f775","components/core/Icon.jsx":"b3a79f68690c","components/core/IconButton.jsx":"62b8df2f0150","components/core/Tag.jsx":"85fb3305db5f","components/forms/Input.jsx":"5727d4704353","components/forms/QuantityStepper.jsx":"9065cb805741","components/layout/Card.jsx":"49c213912207","components/layout/SectionHeader.jsx":"e8e6fe2ca973","ui_kits/shop/App.jsx":"102664f49add","ui_kits/shop/CartScreen.jsx":"9af9705253a7","ui_kits/shop/CategoryScreen.jsx":"5e22ab9f0304","ui_kits/shop/Footer.jsx":"ca891e2bd406","ui_kits/shop/Header.jsx":"7c7e36ef32eb","ui_kits/shop/HomeScreen.jsx":"8cacb30b0c6d","ui_kits/shop/ProductScreen.jsx":"5d7ade068d14","ui_kits/shop/products.js":"b41683f298a5"},"inlinedExternals":[],"unexposedExports":[]} */
 
 (() => {
 
-const __ds_ns = (window.FainoNaturalnoDesignSystem_69873b = window.FainoNaturalnoDesignSystem_69873b || {});
+const __ds_ns = (window.MaistryniaDesignSystem_69873b = window.MaistryniaDesignSystem_69873b || {});
 
 const __ds_scope = {};
 
@@ -994,7 +994,7 @@ try { (() => {
     Icon,
     IconButton,
     Input
-  } = window.FainoNaturalnoDesignSystem_69873b;
+  } = window.MaistryniaDesignSystem_69873b;
   function CartScreen({
     items,
     onQty,
@@ -1234,7 +1234,7 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
     ProductCard,
     SectionHeader,
     Icon
-  } = window.FainoNaturalnoDesignSystem_69873b;
+  } = window.MaistryniaDesignSystem_69873b;
   const CAT_LABELS = {
     all: "Усі товари",
     dry: "Сухофрукти",
@@ -1338,7 +1338,7 @@ try { (() => {
 (function () {
   const {
     Icon
-  } = window.FainoNaturalnoDesignSystem_69873b;
+  } = window.MaistryniaDesignSystem_69873b;
   function Footer() {
     const col = (title, items) => /*#__PURE__*/React.createElement("div", {
       style: {
@@ -1457,7 +1457,7 @@ try { (() => {
     IconButton,
     Input,
     Badge
-  } = window.FainoNaturalnoDesignSystem_69873b;
+  } = window.MaistryniaDesignSystem_69873b;
   function Header({
     cartCount = 0,
     onNav,
@@ -1613,7 +1613,7 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
     Card,
     Icon,
     Badge
-  } = window.FainoNaturalnoDesignSystem_69873b;
+  } = window.MaistryniaDesignSystem_69873b;
   function HomeScreen({
     onNav,
     onAdd,
@@ -1829,7 +1829,7 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
     Icon,
     ProductCard,
     SectionHeader
-  } = window.FainoNaturalnoDesignSystem_69873b;
+  } = window.MaistryniaDesignSystem_69873b;
   function ProductScreen({
     product,
     onNav,

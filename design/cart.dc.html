@@ -12,13 +12,13 @@
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 
-<link rel="stylesheet" href="_ds/faino-naturalno-design-system-69873b7b-f6fd-41c1-a506-a953191d246d/tokens/fonts.css">
-<link rel="stylesheet" href="_ds/faino-naturalno-design-system-69873b7b-f6fd-41c1-a506-a953191d246d/tokens/colors.css">
-<link rel="stylesheet" href="_ds/faino-naturalno-design-system-69873b7b-f6fd-41c1-a506-a953191d246d/tokens/typography.css">
-<link rel="stylesheet" href="_ds/faino-naturalno-design-system-69873b7b-f6fd-41c1-a506-a953191d246d/tokens/spacing.css">
-<link rel="stylesheet" href="_ds/faino-naturalno-design-system-69873b7b-f6fd-41c1-a506-a953191d246d/tokens/base.css">
-<link rel="stylesheet" href="_ds/faino-naturalno-design-system-69873b7b-f6fd-41c1-a506-a953191d246d/styles.css">
-<script src="_ds/faino-naturalno-design-system-69873b7b-f6fd-41c1-a506-a953191d246d/_ds_bundle.js"></script>
+<link rel="stylesheet" href="_ds/maistrynia-design-system-69873b7b-f6fd-41c1-a506-a953191d246d/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/maistrynia-design-system-69873b7b-f6fd-41c1-a506-a953191d246d/tokens/colors.css">
+<link rel="stylesheet" href="_ds/maistrynia-design-system-69873b7b-f6fd-41c1-a506-a953191d246d/tokens/typography.css">
+<link rel="stylesheet" href="_ds/maistrynia-design-system-69873b7b-f6fd-41c1-a506-a953191d246d/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/maistrynia-design-system-69873b7b-f6fd-41c1-a506-a953191d246d/tokens/base.css">
+<link rel="stylesheet" href="_ds/maistrynia-design-system-69873b7b-f6fd-41c1-a506-a953191d246d/styles.css">
+<script src="_ds/maistrynia-design-system-69873b7b-f6fd-41c1-a506-a953191d246d/_ds_bundle.js"></script>
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 <style>
 .cart-link { font-family: var(--font-body); font-weight: var(--fw-semibold); color: var(--cinnamon-700); cursor: pointer; }
@@ -78,8 +78,8 @@
             <h2 style="margin:0;font-size:var(--text-xl);">Кошик</h2>
             <span style="font-size:var(--text-sm);color:var(--text-muted);">{{ countLabel }}</span>
           </div>
-          <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.IconButton" label="Закрити" variant="ghost" size="sm" hint-size="36px,36px">
-            <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Icon" name="x" size="20" hint-size="20px,20px"></x-import>
+          <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.IconButton" label="Закрити" variant="ghost" size="sm" hint-size="36px,36px">
+            <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Icon" name="x" size="20" hint-size="20px,20px"></x-import>
           </x-import>
         </div>
 
@@ -97,11 +97,11 @@
                     <h4 style="margin:0;font-family:var(--font-body);font-weight:var(--fw-bold);font-size:var(--text-base);color:var(--espresso-900);line-height:1.2;">{{ it.name }}</h4>
                   </div>
                   <span class="cart-remove" onClick="{{ it.remove }}" style="display:inline-flex;flex:0 0 auto;padding:2px;">
-                    <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Icon" name="trash-2" size="17" hint-size="17px,17px"></x-import>
+                    <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Icon" name="trash-2" size="17" hint-size="17px,17px"></x-import>
                   </span>
                 </div>
                 <div style="margin-top:auto;padding-top:12px;display:flex;align-items:center;justify-content:space-between;gap:10px;">
-                  <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.QuantityStepper" value="{{ it.qty }}" min="1" max="20" size="sm" onChange="{{ it.setQty }}" hint-size="120px,32px"></x-import>
+                  <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.QuantityStepper" value="{{ it.qty }}" min="1" max="20" size="sm" onChange="{{ it.setQty }}" hint-size="120px,32px"></x-import>
                   <span style="font-family:var(--font-accent);font-weight:700;font-size:var(--text-lg);color:var(--espresso-900);white-space:nowrap;">{{ it.lineTotal }} ₴</span>
                 </div>
               </div>
@@ -123,7 +123,7 @@
             <span style="font-family:var(--font-display);font-weight:800;font-size:var(--text-lg);color:var(--espresso-900);">Разом</span>
             <span style="font-family:var(--font-accent);font-weight:700;font-size:var(--text-2xl);color:var(--espresso-900);">{{ subtotal }} ₴</span>
           </div>
-          <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Button" size="lg" full="{{ true }}" hint-size="100%,54px">Оформити замовлення</x-import>
+          <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Button" size="lg" full="{{ true }}" hint-size="100%,54px">Оформити замовлення</x-import>
           <div style="text-align:center;margin-top:14px;">
             <span class="cart-link" style="font-size:var(--text-sm);">← Продовжити покупки</span>
           </div>
@@ -142,8 +142,8 @@
       </div>
       <div style="position:relative;width:375px;height:760px;background:var(--bg-page);border:var(--border-width) solid var(--border-strong);border-radius:28px;overflow:hidden;box-shadow:var(--shadow-lg);">
         <div style="position:sticky;top:0;z-index:3;display:flex;align-items:center;gap:12px;height:56px;padding:0 14px;background:var(--white);border-bottom:var(--border-width) solid var(--border-subtle);">
-          <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.IconButton" label="Назад" variant="ghost" size="sm" hint-size="34px,34px">
-            <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Icon" name="chevron-left" size="22" hint-size="22px,22px"></x-import>
+          <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.IconButton" label="Назад" variant="ghost" size="sm" hint-size="34px,34px">
+            <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Icon" name="chevron-left" size="22" hint-size="22px,22px"></x-import>
           </x-import>
           <div style="display:flex;align-items:baseline;gap:8px;">
             <h2 style="margin:0;font-size:var(--text-lg);">Кошик</h2>
@@ -161,12 +161,12 @@
                 <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;">
                   <h4 style="margin:0;font-family:var(--font-body);font-weight:var(--fw-bold);font-size:var(--text-sm);color:var(--espresso-900);line-height:1.2;">{{ it.name }}</h4>
                   <span class="cart-remove" style="display:inline-flex;flex:0 0 auto;">
-                    <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Icon" name="trash-2" size="16" hint-size="16px,16px"></x-import>
+                    <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Icon" name="trash-2" size="16" hint-size="16px,16px"></x-import>
                   </span>
                 </div>
                 <span style="font-size:var(--text-xs);color:var(--text-muted);margin-top:2px;">{{ it.category }}</span>
                 <div style="margin-top:auto;padding-top:10px;display:flex;align-items:center;justify-content:space-between;gap:8px;">
-                  <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.QuantityStepper" value="{{ it.qty }}" min="1" max="20" size="sm" onChange="{{ it.setQty }}" hint-size="110px,32px"></x-import>
+                  <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.QuantityStepper" value="{{ it.qty }}" min="1" max="20" size="sm" onChange="{{ it.setQty }}" hint-size="110px,32px"></x-import>
                   <span style="font-family:var(--font-accent);font-weight:700;font-size:var(--text-base);color:var(--espresso-900);white-space:nowrap;">{{ it.lineTotal }} ₴</span>
                 </div>
               </div>
@@ -179,7 +179,7 @@
             <span style="font-family:var(--font-display);font-weight:800;font-size:var(--text-base);color:var(--espresso-900);">Разом</span>
             <span style="font-family:var(--font-accent);font-weight:700;font-size:var(--text-xl);color:var(--espresso-900);">{{ subtotal }} ₴</span>
           </div>
-          <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Button" size="lg" full="{{ true }}" hint-size="100%,54px">Оформити замовлення</x-import>
+          <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Button" size="lg" full="{{ true }}" hint-size="100%,54px">Оформити замовлення</x-import>
         </div>
       </div>
     </div>
@@ -192,17 +192,17 @@
       <div style="width:440px;height:640px;background:var(--surface-card);border:var(--border-width) solid var(--border-subtle);border-radius:var(--radius-xl);box-shadow:var(--shadow-lg);display:flex;flex-direction:column;">
         <div style="display:flex;align-items:center;justify-content:space-between;padding:22px 24px;border-bottom:var(--border-width) solid var(--border-subtle);">
           <h2 style="margin:0;font-size:var(--text-xl);">Кошик</h2>
-          <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.IconButton" label="Закрити" variant="ghost" size="sm" hint-size="36px,36px">
-            <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Icon" name="x" size="20" hint-size="20px,20px"></x-import>
+          <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.IconButton" label="Закрити" variant="ghost" size="sm" hint-size="36px,36px">
+            <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Icon" name="x" size="20" hint-size="20px,20px"></x-import>
           </x-import>
         </div>
         <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:32px 40px;">
           <div style="width:132px;height:132px;border-radius:999px;background:var(--kraft-100);border:var(--border-width) solid var(--border-subtle);display:flex;align-items:center;justify-content:center;margin-bottom:26px;color:var(--kraft-500);">
-            <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Icon" name="shopping-basket" size="60" strokeWidth="1.5" hint-size="60px,60px"></x-import>
+            <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Icon" name="shopping-basket" size="60" strokeWidth="1.5" hint-size="60px,60px"></x-import>
           </div>
           <h3 style="margin:0 0 8px;font-size:var(--text-xl);">Кошик порожній</h3>
           <p style="margin:0 0 26px;color:var(--espresso-700);max-width:280px;">Ще нічого не додали. Загляньте до каталогу — ми зібрали для вас багато смачного.</p>
-          <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Button" size="lg" hint-size="auto,54px">Перейти до каталогу</x-import>
+          <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Button" size="lg" hint-size="auto,54px">Перейти до каталогу</x-import>
         </div>
       </div>
     </div>

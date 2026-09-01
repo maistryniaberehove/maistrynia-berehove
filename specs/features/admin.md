@@ -39,7 +39,7 @@ Full-stack: ASP.NET Core API + Angular UI + PostgreSQL data access.
 ## References
 
 - Claude Design: `design/admin.dc.html` (products list, product form, orders, categories, drawers, mobile products)
-- Design system: `design/_ds/faino-naturalno-design-system-69873b7b-f6fd-41c1-a506-a953191d246d/`
+- Design system: `design/_ds/maistrynia-design-system-69873b7b-f6fd-41c1-a506-a953191d246d/`
 - Product overview: `SPEC.md` (пріоритет 6 — CRUD товарів та замовлень)
 - Models: `specs/models.md` (Product, Category, Order, OrderItem, User.IsAdmin)
 - API conventions: `specs/api.md` (Admin products / categories / admin orders)

@@ -128,7 +128,7 @@ export interface CartMergeResponse {
 }
 
 export const AUTH_STORAGE_KEYS = {
-  accessToken: 'fayno.auth.access-token',
-  refreshToken: 'fayno.auth.refresh-token',
-  user: 'fayno.auth.user',
+  accessToken: 'maistrynia.auth.access-token',
+  refreshToken: 'maistrynia.auth.refresh-token',
+  user: 'maistrynia.auth.user',
 } as const;

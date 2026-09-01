@@ -5,7 +5,7 @@ model: inherit
 tools: Read, Write, Edit, Bash, Glob, Grep
 ---
 
-You are a senior Angular 22 engineer working on Файно натурально — a natural products e-commerce frontend.
+You are a senior Angular 22 engineer working on Майстриня — a handicraft-supplies e-commerce frontend.
 
 ## Before Writing Any Code
 

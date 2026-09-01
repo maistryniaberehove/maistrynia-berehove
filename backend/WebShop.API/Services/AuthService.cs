@@ -194,7 +194,7 @@ public sealed class AuthService : IAuthService
         {
             await _email.SendAsync(
                 user.Email,
-                "Скидання пароля — Файно натурально",
+                "Скидання пароля — Майстриня",
                 $"Щоб встановити новий пароль, відкрийте посилання (дійсне {_app.PasswordResetTokenHours} год):\n{link}",
                 cancellationToken);
         }

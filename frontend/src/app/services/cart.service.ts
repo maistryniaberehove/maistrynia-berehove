@@ -18,7 +18,7 @@ import { LOCAL_STORAGE } from '../utils/browser-storage';
 import { extractApiError } from './auth.service';
 import { ToastService } from './toast.service';
 
-const SESSION_KEY = 'fayno.cart.session-id';
+const SESSION_KEY = 'maistrynia.cart.session-id';
 const SESSION_HEADER = 'X-Cart-Session-Id';
 
 @Injectable({ providedIn: 'root' })

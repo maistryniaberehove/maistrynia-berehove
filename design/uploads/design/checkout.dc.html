@@ -12,13 +12,13 @@
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 
-<link rel="stylesheet" href="_ds/faino-naturalno-design-system-69873b7b-f6fd-41c1-a506-a953191d246d/tokens/fonts.css">
-<link rel="stylesheet" href="_ds/faino-naturalno-design-system-69873b7b-f6fd-41c1-a506-a953191d246d/tokens/colors.css">
-<link rel="stylesheet" href="_ds/faino-naturalno-design-system-69873b7b-f6fd-41c1-a506-a953191d246d/tokens/typography.css">
-<link rel="stylesheet" href="_ds/faino-naturalno-design-system-69873b7b-f6fd-41c1-a506-a953191d246d/tokens/spacing.css">
-<link rel="stylesheet" href="_ds/faino-naturalno-design-system-69873b7b-f6fd-41c1-a506-a953191d246d/tokens/base.css">
-<link rel="stylesheet" href="_ds/faino-naturalno-design-system-69873b7b-f6fd-41c1-a506-a953191d246d/styles.css">
-<script src="_ds/faino-naturalno-design-system-69873b7b-f6fd-41c1-a506-a953191d246d/_ds_bundle.js"></script>
+<link rel="stylesheet" href="_ds/maistrynia-design-system-69873b7b-f6fd-41c1-a506-a953191d246d/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/maistrynia-design-system-69873b7b-f6fd-41c1-a506-a953191d246d/tokens/colors.css">
+<link rel="stylesheet" href="_ds/maistrynia-design-system-69873b7b-f6fd-41c1-a506-a953191d246d/tokens/typography.css">
+<link rel="stylesheet" href="_ds/maistrynia-design-system-69873b7b-f6fd-41c1-a506-a953191d246d/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/maistrynia-design-system-69873b7b-f6fd-41c1-a506-a953191d246d/tokens/base.css">
+<link rel="stylesheet" href="_ds/maistrynia-design-system-69873b7b-f6fd-41c1-a506-a953191d246d/styles.css">
+<script src="_ds/maistrynia-design-system-69873b7b-f6fd-41c1-a506-a953191d246d/_ds_bundle.js"></script>
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 <style>
 @keyframes fnSpin { to { transform: rotate(360deg); } }
@@ -56,12 +56,12 @@
           </div>
           <div style="display:flex;flex-direction:column;gap:16px;">
             <div style="display:flex;gap:14px;">
-              <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Input" label="Ім'я" value="Олена" hint-size="100%,72px"></x-import>
-              <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Input" label="Прізвище" value="Коваль" hint-size="100%,72px"></x-import>
+              <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Input" label="Ім'я" value="Олена" hint-size="100%,72px"></x-import>
+              <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Input" label="Прізвище" value="Коваль" hint-size="100%,72px"></x-import>
             </div>
             <div style="display:flex;gap:14px;">
-              <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Input" label="Телефон" type="tel" value="+38 (095) 348 85 36" hint-size="100%,72px"></x-import>
-              <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Input" label="Ел. пошта" type="email" value="olena@example.com" hint-size="100%,72px"></x-import>
+              <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Input" label="Телефон" type="tel" value="+38 (095) 348 85 36" hint-size="100%,72px"></x-import>
+              <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Input" label="Ел. пошта" type="email" value="olena@example.com" hint-size="100%,72px"></x-import>
             </div>
           </div>
         </div>
@@ -82,7 +82,7 @@
           <!-- saved address banner -->
           <div style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:var(--marigold-50);border:var(--border-width) solid var(--marigold-300);border-radius:var(--radius-md);margin-bottom:18px;">
             <span style="color:var(--cinnamon-700);display:inline-flex;margin-top:1px;">
-              <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Icon" name="truck" size="18" hint-size="18px,18px"></x-import>
+              <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Icon" name="truck" size="18" hint-size="18px,18px"></x-import>
             </span>
             <div style="flex:1;min-width:0;">
               <span style="display:block;font-family:var(--font-body);font-weight:var(--fw-bold);font-size:var(--text-sm);color:var(--espresso-900);margin-bottom:1px;">Збережена адреса підставлена</span>
@@ -97,7 +97,7 @@
               <label style="font-family:var(--font-body);font-weight:var(--fw-semibold);font-size:var(--text-sm);color:var(--espresso-800);">Місто</label>
               <div style="position:relative;">
                 <span style="position:absolute;left:14px;top:50%;transform:translateY(-50%);pointer-events:none;color:var(--kraft-500);display:inline-flex;">
-                  <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Icon" name="search" size="17" hint-size="17px,17px"></x-import>
+                  <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Icon" name="search" size="17" hint-size="17px,17px"></x-import>
                 </span>
                 <input type="text" value="{{ cityQuery }}" onInput="{{ onCityInput }}" placeholder="Почніть вводити місто…" style="width:100%;padding:12px 14px 12px 42px;font-family:var(--font-body);font-size:var(--text-base);color:var(--espresso-800);background:var(--white);border:var(--border-width) solid var(--border-strong);border-radius:var(--radius-md);outline:none;">
               </div>
@@ -105,7 +105,7 @@
                 <div style="position:absolute;top:100%;left:0;right:0;z-index:20;margin-top:6px;background:var(--white);border:var(--border-width) solid var(--border-subtle);border-radius:var(--radius-md);box-shadow:var(--shadow-lg);overflow:hidden;max-height:230px;overflow-y:auto;">
                   <sc-for list="{{ cityMatches }}" as="ct" hint-placeholder-count="4">
                     <button type="button" onClick="{{ ct.pick }}" style="display:flex;align-items:center;gap:10px;width:100%;padding:12px 16px;background:none;border:none;border-bottom:var(--border-width) solid var(--border-subtle);cursor:pointer;text-align:left;font-family:var(--font-body);font-size:var(--text-base);color:var(--espresso-800);">
-                      <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Icon" name="map-pin" size="16" color="var(--kraft-500)" hint-size="16px,16px"></x-import>
+                      <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Icon" name="map-pin" size="16" color="var(--kraft-500)" hint-size="16px,16px"></x-import>
                       <span style="flex:1;">{{ ct.name }}</span>
                       <span style="font-size:var(--text-xs);color:var(--text-muted);">{{ ct.region }}</span>
                     </button>
@@ -135,14 +135,14 @@
                     </sc-for>
                   </select>
                   <span style="position:absolute;right:14px;top:50%;transform:translateY(-50%);pointer-events:none;display:inline-flex;color:var(--espresso-700);">
-                    <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Icon" name="chevron-down" size="16" hint-size="16px,16px"></x-import>
+                    <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Icon" name="chevron-down" size="16" hint-size="16px,16px"></x-import>
                   </span>
                 </div>
               </sc-if>
             </div>
 
             <div style="display:inline-flex;align-items:center;gap:8px;font-size:var(--text-sm);color:var(--garden-700);">
-              <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Icon" name="clock" size="16" hint-size="16px,16px"></x-import>
+              <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Icon" name="clock" size="16" hint-size="16px,16px"></x-import>
               Орієнтовно: 2–3 робочі дні
             </div>
           </div>
@@ -157,7 +157,7 @@
           <textarea placeholder="Побажання щодо замовлення чи доставки…" style="width:100%;min-height:96px;resize:vertical;padding:14px;font-family:var(--font-body);font-size:var(--text-base);color:var(--espresso-800);background:var(--white);border:var(--border-width) solid var(--border-strong);border-radius:var(--radius-md);outline:none;"></textarea>
         </div>
 
-        <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Button" size="lg" full="{{ true }}" hint-size="100%,56px">Оформити замовлення</x-import>
+        <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Button" size="lg" full="{{ true }}" hint-size="100%,56px">Оформити замовлення</x-import>
       </div>
 
       <!-- RIGHT: summary -->
@@ -208,8 +208,8 @@
       </div>
       <div style="width:375px;background:var(--bg-page);border:var(--border-width) solid var(--border-strong);border-radius:28px;overflow:hidden;box-shadow:var(--shadow-lg);">
         <div style="display:flex;align-items:center;gap:12px;height:56px;padding:0 14px;background:var(--white);border-bottom:var(--border-width) solid var(--border-subtle);">
-          <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.IconButton" label="Назад" variant="ghost" size="sm" hint-size="34px,34px">
-            <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Icon" name="chevron-left" size="22" hint-size="22px,22px"></x-import>
+          <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.IconButton" label="Назад" variant="ghost" size="sm" hint-size="34px,34px">
+            <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Icon" name="chevron-left" size="22" hint-size="22px,22px"></x-import>
           </x-import>
           <h2 style="margin:0;font-size:var(--text-lg);">Оформлення</h2>
         </div>
@@ -231,11 +231,11 @@
             <h3 style="margin:0 0 14px;font-size:var(--text-base);">Контактні дані</h3>
             <div style="display:flex;flex-direction:column;gap:12px;">
               <div style="display:flex;gap:10px;">
-                <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Input" label="Ім'я" value="Олена" hint-size="100%,72px"></x-import>
-                <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Input" label="Прізвище" value="Коваль" hint-size="100%,72px"></x-import>
+                <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Input" label="Ім'я" value="Олена" hint-size="100%,72px"></x-import>
+                <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Input" label="Прізвище" value="Коваль" hint-size="100%,72px"></x-import>
               </div>
-              <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Input" label="Телефон" type="tel" value="+38 (095) 348 85 36" hint-size="100%,72px"></x-import>
-              <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Input" label="Ел. пошта" type="email" value="olena@example.com" hint-size="100%,72px"></x-import>
+              <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Input" label="Телефон" type="tel" value="+38 (095) 348 85 36" hint-size="100%,72px"></x-import>
+              <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Input" label="Ел. пошта" type="email" value="olena@example.com" hint-size="100%,72px"></x-import>
             </div>
           </div>
 
@@ -252,7 +252,7 @@
                 <label style="font-family:var(--font-body);font-weight:var(--fw-semibold);font-size:var(--text-sm);color:var(--espresso-800);">Місто</label>
                 <div style="position:relative;">
                   <span style="position:absolute;left:14px;top:50%;transform:translateY(-50%);pointer-events:none;color:var(--kraft-500);display:inline-flex;">
-                    <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Icon" name="search" size="16" hint-size="16px,16px"></x-import>
+                    <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Icon" name="search" size="16" hint-size="16px,16px"></x-import>
                   </span>
                   <input type="text" value="Львів" readonly style="width:100%;padding:12px 14px 12px 40px;font-family:var(--font-body);font-size:var(--text-base);color:var(--espresso-800);background:var(--white);border:var(--border-width) solid var(--border-strong);border-radius:var(--radius-md);outline:none;min-height:48px;">
                 </div>
@@ -262,12 +262,12 @@
                 <div style="position:relative;">
                   <div style="width:100%;padding:12px 36px 12px 14px;font-family:var(--font-body);font-size:var(--text-sm);color:var(--espresso-800);background:var(--white);border:var(--border-width) solid var(--border-strong);border-radius:var(--radius-md);min-height:48px;display:flex;align-items:center;">Відділення №3: вул. Січових Стрільців, 30</div>
                   <span style="position:absolute;right:12px;top:50%;transform:translateY(-50%);pointer-events:none;display:inline-flex;color:var(--espresso-700);">
-                    <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Icon" name="chevron-down" size="15" hint-size="15px,15px"></x-import>
+                    <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Icon" name="chevron-down" size="15" hint-size="15px,15px"></x-import>
                   </span>
                 </div>
               </div>
               <div style="display:inline-flex;align-items:center;gap:7px;font-size:var(--text-sm);color:var(--garden-700);">
-                <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Icon" name="clock" size="15" hint-size="15px,15px"></x-import>
+                <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Icon" name="clock" size="15" hint-size="15px,15px"></x-import>
                 Орієнтовно: 2–3 робочі дні
               </div>
             </div>
@@ -278,7 +278,7 @@
             <textarea placeholder="Побажання щодо замовлення…" style="width:100%;min-height:72px;resize:vertical;padding:12px;font-family:var(--font-body);font-size:var(--text-base);color:var(--espresso-800);background:var(--white);border:var(--border-width) solid var(--border-strong);border-radius:var(--radius-md);outline:none;"></textarea>
           </div>
 
-          <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Button" size="lg" full="{{ true }}" hint-size="100%,56px">Оформити замовлення</x-import>
+          <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Button" size="lg" full="{{ true }}" hint-size="100%,56px">Оформити замовлення</x-import>
         </div>
       </div>
     </div>
@@ -297,7 +297,7 @@
             <label style="font-family:var(--font-body);font-weight:var(--fw-semibold);font-size:var(--text-sm);color:var(--espresso-800);">Місто</label>
             <div style="position:relative;">
               <span style="position:absolute;left:14px;top:50%;transform:translateY(-50%);pointer-events:none;color:var(--kraft-500);display:inline-flex;">
-                <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Icon" name="search" size="16" hint-size="16px,16px"></x-import>
+                <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Icon" name="search" size="16" hint-size="16px,16px"></x-import>
               </span>
               <input type="text" value="" readonly placeholder="Почніть вводити місто…" style="width:100%;padding:12px 14px 12px 40px;font-family:var(--font-body);font-size:var(--text-base);color:var(--espresso-800);background:var(--white);border:var(--border-width) solid var(--border-strong);border-radius:var(--radius-md);outline:none;">
             </div>
@@ -317,7 +317,7 @@
             <label style="font-family:var(--font-body);font-weight:var(--fw-semibold);font-size:var(--text-sm);color:var(--espresso-800);">Місто</label>
             <div style="position:relative;">
               <span style="position:absolute;left:14px;top:50%;transform:translateY(-50%);pointer-events:none;color:var(--kraft-500);display:inline-flex;">
-                <x-import component-from-global-scope="FainoNaturalnoDesignSystem_69873b.Icon" name="search" size="16" hint-size="16px,16px"></x-import>
+                <x-import component-from-global-scope="MaistryniaDesignSystem_69873b.Icon" name="search" size="16" hint-size="16px,16px"></x-import>
               </span>
               <input type="text" value="Київ" readonly style="width:100%;padding:12px 14px 12px 40px;font-family:var(--font-body);font-size:var(--text-base);color:var(--espresso-800);background:var(--white);border:var(--border-width) solid var(--marigold-400);border-radius:var(--radius-md);outline:none;">
             </div>

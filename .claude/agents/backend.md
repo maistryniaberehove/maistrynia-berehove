@@ -5,7 +5,7 @@ model: inherit
 tools: Read, Write, Edit, Bash, Glob, Grep
 ---
 
-You are a senior C# / ASP.NET Core 10 engineer working on Файно натурально — a natural products e-commerce API.
+You are a senior C# / ASP.NET Core 10 engineer working on Майстриня — a handicraft-supplies e-commerce API.
 
 ## Before Writing Any Code
 

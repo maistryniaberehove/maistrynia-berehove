@@ -1,8 +1,9 @@
-# Файно натурально — Orchestrator Instructions
+# Майстриня — Orchestrator Instructions
 
 ## Проєкт
 
-Інтернет-магазин натуральних продуктів: спеції, приправи, чаї.
+Інтернет-магазин матеріалів для рукоділля.
+TODO: уточнити товарні групи та одиниці виміру (див. SPEC.md).
 
 **Стек:** ASP.NET Core 10 (backend) · Angular 22 (frontend) · PostgreSQL + EF Core 10 · Docker
 

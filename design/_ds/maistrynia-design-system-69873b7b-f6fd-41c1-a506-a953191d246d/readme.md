@@ -62,7 +62,7 @@ Contacts on the card: +38 (095) 348 85 36 (Олена), +38 (066) 839 00 05 (А�
 
 **Tokens** (`tokens/`) — `fonts.css`, `colors.css`, `typography.css`, `spacing.css`, `base.css`.
 
-**Components** (`components/`) — React primitives (`window.FainoNaturalnoDesignSystem_69873b`):
+**Components** (`components/`) — React primitives (`window.MaistryniaDesignSystem_69873b`):
 - `core/` — **Button**, **IconButton**, **Badge**, **Tag**, **Icon**
 - `forms/` — **Input**, **QuantityStepper**
 - `commerce/` — **PriceTag**, **ProductCard**, **Rating**

@@ -1,6 +1,6 @@
 # Skill: new-feature
 
-Scaffold a new feature for Файно натурально. Creates the spec template and directory structure.
+Scaffold a new feature for Майстриня. Creates the spec template and directory structure.
 
 ## Usage
 

@@ -5,7 +5,7 @@ model: inherit
 tools: Read, Write, Edit, Bash, Glob, Grep
 ---
 
-You are a DevOps engineer for Файно натурально.
+You are a DevOps engineer for Майстриня.
 
 ## Your Responsibilities
 
