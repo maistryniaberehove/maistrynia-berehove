@@ -172,6 +172,7 @@
     "categoriesUnavailable": "Categories temporarily unavailable",
     "categoriesLoadError": "Could not load categories.",
     "categoriesLoading": "Loading categories",
+    "categoriesEmpty": "No categories yet",
     "price": "Price, ₴",
     "from": "from",
     "to": "to",

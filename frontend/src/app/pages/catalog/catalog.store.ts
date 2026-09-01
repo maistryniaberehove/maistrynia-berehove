@@ -6,6 +6,7 @@ import {
   catchError,
   debounceTime,
   EMPTY,
+  finalize,
   map,
   of,
   Subject,
@@ -65,6 +66,7 @@ export class CatalogStore {
   private readonly loadingMoreState = signal(false);
   private readonly errorState = signal<string | null>(null);
   private readonly categoryErrorState = signal(false);
+  private readonly categoriesLoadingState = signal(true);
   private readonly previewCountState = signal<number | null>(null);
 
   readonly filters = this.filtersState.asReadonly();
@@ -76,6 +78,7 @@ export class CatalogStore {
   readonly loadingMore = this.loadingMoreState.asReadonly();
   readonly error = this.errorState.asReadonly();
   readonly categoryError = this.categoryErrorState.asReadonly();
+  readonly categoriesLoading = this.categoriesLoadingState.asReadonly();
   readonly previewCount = this.previewCountState.asReadonly();
   readonly hasMore = computed(() => {
     const page = this.pageState();
@@ -299,6 +302,8 @@ export class CatalogStore {
   }
 
   private loadCategories(): void {
+    this.categoriesLoadingState.set(true);
+    this.categoryErrorState.set(false);
     this.categoriesApi
       .getCategories()
       .pipe(
@@ -306,6 +311,7 @@ export class CatalogStore {
           this.categoryErrorState.set(true);
           return EMPTY;
         }),
+        finalize(() => this.categoriesLoadingState.set(false)),
         takeUntilDestroyed(this.destroyRef),
       )
       .subscribe((response) => {

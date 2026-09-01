@@ -18,6 +18,8 @@
           <div class="flex flex-wrap items-center gap-2">
             @if (store.categoryError()) {
               <span class="text-sm text-[var(--chili-700)]">{{ 'catalog.categoriesUnavailable' | transloco }}</span>
+            } @else if (!store.categoriesLoading() && !store.categories().length) {
+              <span class="text-sm text-[var(--text-muted)]">{{ 'catalog.categoriesEmpty' | transloco }}</span>
             } @else {
               <div class="flex w-full flex-col gap-1.5">
                 @for (category of store.categories(); track category.id) {
@@ -91,12 +93,14 @@
           <h3 class="fn-eyebrow mb-3">{{ 'catalog.categories' | transloco }}</h3>
           @if (store.categoryError()) {
             <p class="text-sm text-[var(--chili-700)]">{{ 'catalog.categoriesLoadError' | transloco }}</p>
-          } @else if (!store.categories().length) {
+          } @else if (store.categoriesLoading()) {
             <div class="space-y-3" [attr.aria-label]="'catalog.categoriesLoading' | transloco">
               <div class="h-6 animate-pulse rounded bg-[var(--kraft-200)]"></div>
               <div class="h-6 animate-pulse rounded bg-[var(--kraft-200)]"></div>
               <div class="h-6 animate-pulse rounded bg-[var(--kraft-200)]"></div>
             </div>
+          } @else if (!store.categories().length) {
+            <p class="text-sm text-[var(--text-muted)]">{{ 'catalog.categoriesEmpty' | transloco }}</p>
           } @else {
             <div class="space-y-2">
               @for (category of store.categories(); track category.id) {
@@ -328,6 +332,8 @@
       <h3 class="fn-eyebrow mb-2">{{ 'catalog.categories' | transloco }}</h3>
       @if (store.categoryError()) {
         <p class="text-sm text-[var(--chili-700)]">{{ 'catalog.categoriesUnavailable' | transloco }}.</p>
+      } @else if (!store.categoriesLoading() && !store.categories().length) {
+        <p class="text-sm text-[var(--text-muted)]">{{ 'catalog.categoriesEmpty' | transloco }}</p>
       } @else {
         <div class="mb-5 space-y-1">
           @for (category of store.categories(); track category.id) {

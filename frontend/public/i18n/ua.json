@@ -172,6 +172,7 @@
     "categoriesUnavailable": "Категорії тимчасово недоступні",
     "categoriesLoadError": "Не вдалося завантажити категорії.",
     "categoriesLoading": "Завантаження категорій",
+    "categoriesEmpty": "Категорій ще немає",
     "price": "Ціна, ₴",
     "from": "від",
     "to": "до",
