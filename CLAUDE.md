@@ -40,7 +40,7 @@ Claude Design (макет)
 ## Структура проєкту
 
 ```
-fayno-shop/
+web-shop/
 ├── CLAUDE.md                  ← ти тут
 ├── SPEC.md                    ← загальний опис продукту
 ├── docker-compose.yml         ← PostgreSQL + pgAdmin
@@ -95,7 +95,7 @@ fayno-shop/
 ## Конвенції
 
 ### Backend (C#)
-- Namespace: `FaynoShop.API`
+- Namespace: `WebShop.API`
 - Controllers у `/Controllers`, Services у `/Services`, DTOs у `/DTOs`
 - Всі endpoints повертають `ApiResponse<T>` wrapper
 - Async/await скрізь, cancellation tokens у всіх публічних методах

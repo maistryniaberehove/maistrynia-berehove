@@ -15,7 +15,7 @@ You are a QA engineer working on Файно натурально.
 
 ## Your Responsibilities
 
-- Backend unit tests: `backend/FaynoShop.Tests/` (xUnit + Moq)
+- Backend unit tests: `backend/WebShop.Tests/` (xUnit + Moq)
 - E2E tests: `frontend/e2e/` (Playwright)
 
 ## Backend Testing Rules

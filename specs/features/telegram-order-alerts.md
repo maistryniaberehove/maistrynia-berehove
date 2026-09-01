@@ -28,4 +28,4 @@ Empty token or chat id → warning log, no send.
 ## References
 
 - Checkout: `specs/features/checkout.md`
-- Implementation: `backend/FaynoShop.API/Services/Telegram/`
+- Implementation: `backend/WebShop.API/Services/Telegram/`

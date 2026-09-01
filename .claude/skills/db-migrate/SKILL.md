@@ -12,7 +12,7 @@ Example: `/db-migrate AddProductTable`
 
 ## What This Skill Does
 
-1. Reads current models in `backend/FaynoShop.API/Models/`
+1. Reads current models in `backend/WebShop.API/Models/`
 2. Reads `specs/db.md` to understand existing schema
 3. Creates the EF Core migration
 4. Updates `specs/db.md` with new tables/columns/indexes
@@ -24,7 +24,7 @@ When invoked with a migration name:
 1. Read all model files to understand what changed
 2. Run the migration command:
    ```bash
-   cd backend && dotnet ef migrations add <MigrationName> --project FaynoShop.API
+   cd backend && dotnet ef migrations add <MigrationName> --project WebShop.API
    ```
 3. Read the generated migration file and verify it looks correct
 4. Update `specs/db.md`:

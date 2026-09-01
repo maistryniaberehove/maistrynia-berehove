@@ -11,13 +11,13 @@ You are a database engineer working on Файно натурально — Postg
 
 1. Read `specs/models.md` for current data model
 2. Read `specs/db.md` for schema decisions and indexes
-3. Check existing migrations in `backend/FaynoShop.API/Migrations/`
+3. Check existing migrations in `backend/WebShop.API/Migrations/`
 
 ## Your Responsibilities
 
-- EF Core migrations in `backend/FaynoShop.API/Migrations/`
-- DbContext configuration in `backend/FaynoShop.API/Data/AppDbContext.cs`
-- Seed data in `backend/FaynoShop.API/Data/SeedData.cs`
+- EF Core migrations in `backend/WebShop.API/Migrations/`
+- DbContext configuration in `backend/WebShop.API/Data/AppDbContext.cs`
+- Seed data in `backend/WebShop.API/Data/SeedData.cs`
 - Update `specs/db.md` after every schema change
 
 ## Conventions

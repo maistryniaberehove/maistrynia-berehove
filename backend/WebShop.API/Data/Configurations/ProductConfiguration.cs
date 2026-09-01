@@ -1,0 +1,89 @@
+using WebShop.API.Constants;
+using WebShop.API.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+namespace WebShop.API.Data.Configurations;
+
+public class ProductConfiguration : IEntityTypeConfiguration<Product>
+{
+    public void Configure(EntityTypeBuilder<Product> builder)
+    {
+        builder.ToTable("products", t => t.HasCheckConstraint(
+            "ck_products_strength",
+            $"strength IS NULL OR (strength >= {ProductStrength.Min} AND strength <= {ProductStrength.Max})"));
+
+        builder.HasKey(p => p.Id);
+
+        builder.Property(p => p.NameUk)
+            .HasMaxLength(200)
+            .IsRequired();
+
+        builder.Property(p => p.NameEn)
+            .HasMaxLength(200);
+
+        builder.Property(p => p.Slug)
+            .HasMaxLength(200)
+            .IsRequired();
+
+        builder.Property(p => p.ShortDescriptionUk)
+            .HasMaxLength(500);
+
+        builder.Property(p => p.ShortDescriptionEn)
+            .HasMaxLength(500);
+
+        builder.Property(p => p.ImageUrl)
+            .HasMaxLength(500);
+
+        builder.Property(p => p.ImageUrls)
+            .HasColumnType("text[]");
+
+        builder.Property(p => p.IsActive)
+            .IsRequired()
+            .HasDefaultValue(true);
+
+        builder.Property(p => p.IsFeatured)
+            .IsRequired()
+            .HasDefaultValue(false);
+
+        builder.Property(p => p.IsAvailable)
+            .IsRequired()
+            .HasDefaultValue(true);
+
+        builder.Property(p => p.Strength);
+
+        builder.Property(p => p.CreatedAt)
+            .HasColumnType("timestamptz")
+            .IsRequired()
+            .HasDefaultValueSql("now()");
+
+        builder.Property(p => p.UpdatedAt)
+            .HasColumnType("timestamptz")
+            .IsRequired()
+            .HasDefaultValueSql("now()");
+
+        builder.HasOne(p => p.Category)
+            .WithMany(c => c.Products)
+            .HasForeignKey(p => p.CategoryId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        builder.HasIndex(p => p.Slug)
+            .IsUnique()
+            .HasDatabaseName("idx_products_slug");
+
+        builder.HasIndex(p => p.CategoryId)
+            .HasDatabaseName("idx_products_category_id");
+
+        builder.HasIndex(p => p.IsActive)
+            .HasDatabaseName("idx_products_is_active");
+
+        builder.HasIndex(p => new { p.CategoryId, p.IsActive })
+            .HasDatabaseName("idx_products_category_id_is_active");
+
+        builder.HasIndex(p => p.IsFeatured)
+            .HasDatabaseName("idx_products_is_featured");
+
+        builder.HasIndex(p => p.CreatedAt)
+            .HasDatabaseName("idx_products_created_at");
+    }
+}

@@ -13,7 +13,7 @@ Example: `/new-feature catalog`
 ## What This Skill Does
 
 1. Creates `specs/features/<feature-name>.md` with a spec template
-2. Creates backend directory: `backend/FaynoShop.API/Controllers/`, `Services/`, `DTOs/` placeholders
+2. Creates backend directory: `backend/WebShop.API/Controllers/`, `Services/`, `DTOs/` placeholders
 3. Creates frontend directory: `frontend/src/app/pages/<feature-name>/`
 4. Reminds you to run `requirements-planner` to fill in the spec
 

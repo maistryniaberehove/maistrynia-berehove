@@ -280,7 +280,7 @@ Seeded with `id=1`, `ukrposhta_free_from_amount=1300`.
 Host=localhost;Port=5432;Database=fayno_shop;Username=fayno;Password=fayno_secret
 ```
 
-Configured in `backend/FaynoShop.API/appsettings.json` as `ConnectionStrings:DefaultConnection` (local). On Railway the API uses `DATABASE_URL` from a linked Postgres service; alternatively set `ConnectionStrings__DefaultConnection`. Production refuses the localhost fallback.
+Configured in `backend/WebShop.API/appsettings.json` as `ConnectionStrings:DefaultConnection` (local). On Railway the API uses `DATABASE_URL` from a linked Postgres service; alternatively set `ConnectionStrings__DefaultConnection`. Production refuses the localhost fallback.
 
 ---
 

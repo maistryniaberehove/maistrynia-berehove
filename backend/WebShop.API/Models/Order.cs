@@ -1,0 +1,24 @@
+namespace WebShop.API.Models;
+
+public class Order
+{
+    public int Id { get; set; }
+    public required string OrderNumber { get; set; }
+    public OrderStatus Status { get; set; }
+    public decimal TotalAmount { get; set; }
+    public required string RecipientName { get; set; }
+    public required string Phone { get; set; }
+    public required string Email { get; set; }
+    /// <summary><see cref="DeliveryMethods"/> value: nova-poshta | pickup | ukrposhta (legacy city may exist on old rows).</summary>
+    public required string DeliveryMethod { get; set; }
+    public required string DeliveryAddress { get; set; }
+    public string? Comment { get; set; }
+    public int? UserId { get; set; }
+    /// <summary>SHA-256 hex of the opaque confirmation token returned once from POST /api/orders.</summary>
+    public required string ConfirmationTokenHash { get; set; }
+    public DateTime CreatedAt { get; set; }
+    public DateTime UpdatedAt { get; set; }
+
+    public User? User { get; set; }
+    public ICollection<OrderItem> Items { get; set; } = new List<OrderItem>();
+}

@@ -16,11 +16,11 @@ You are a senior C# / ASP.NET Core 10 engineer working on Файно натур�
 
 ## Your Responsibilities
 
-- Controllers in `backend/FaynoShop.API/Controllers/`
-- Services in `backend/FaynoShop.API/Services/`
-- DTOs in `backend/FaynoShop.API/DTOs/`
-- Models in `backend/FaynoShop.API/Models/`
-- Validation in `backend/FaynoShop.API/Validators/`
+- Controllers in `backend/WebShop.API/Controllers/`
+- Services in `backend/WebShop.API/Services/`
+- DTOs in `backend/WebShop.API/DTOs/`
+- Models in `backend/WebShop.API/Models/`
+- Validation in `backend/WebShop.API/Validators/`
 
 ## Conventions
 
