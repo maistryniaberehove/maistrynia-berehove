@@ -2,50 +2,50 @@
 @import "tailwindcss";
 
 :root {
-  /* Rose (primary brand pink) */
-  --marigold-50: #fdf3f1;
-  --marigold-100: #fae2de;
-  --marigold-200: #f4c8c4;
-  --marigold-300: #edaaa6;
-  --marigold-400: #e79088;
-  --marigold-500: #d5766f;
-  --marigold-600: #bb5c58;
-  --marigold-700: #954844;
-  --sun-300: #f6cfc6;
+  /* Lavender (primary brand) */
+  --marigold-50: #f8f5fc;
+  --marigold-100: #f0eaf8;
+  --marigold-200: #e0d4f0;
+  --marigold-300: #cdb8e5;
+  --marigold-400: #b39cd9;
+  --marigold-500: #9a7fc7;
+  --marigold-600: #8165b0;
+  --marigold-700: #684f8f;
+  --sun-300: #e8dcf5;
 
-  /* Ink */
-  --espresso-900: #191412;
-  --espresso-800: #26201d;
-  --espresso-700: #3c3330;
-  --espresso-600: #574b47;
-  --espresso-500: #75655f;
+  /* Ink (cool plum) */
+  --espresso-900: #1a1520;
+  --espresso-800: #2a2433;
+  --espresso-700: #3f374a;
+  --espresso-600: #564d63;
+  --espresso-500: #73687f;
 
-  /* Gold frame */
-  --cinnamon-700: #a87a33;
-  --cinnamon-500: #c39a4e;
-  --amber-500: #c9a063;
-  --amber-300: #e3c99d;
+  /* Dusty lilac secondary */
+  --cinnamon-700: #7b6a9b;
+  --cinnamon-500: #9a88b8;
+  --amber-500: #b5a4cf;
+  --amber-300: #d6cce6;
 
-  /* Warm paper neutrals */
-  --kraft-50: #fffaf8;
-  --kraft-100: #fbf1ee;
-  --kraft-200: #f3e4e0;
-  --kraft-300: #e6d2cd;
-  --kraft-400: #d2b8b2;
-  --kraft-500: #97817c;
+  /* Cool lavender paper neutrals */
+  --kraft-50: #fbf9fd;
+  --kraft-100: #f4f0f8;
+  --kraft-200: #e9e3f0;
+  --kraft-300: #d8d0e3;
+  --kraft-400: #c0b5cf;
+  --kraft-500: #8a7f9a;
 
-  /* Yarn teal */
-  --garden-100: #dcede9;
-  --garden-500: #4e9c8f;
-  --garden-700: #34706a;
+  /* Soft sage accent */
+  --garden-100: #e4efe8;
+  --garden-500: #6a9b84;
+  --garden-700: #4a7460;
 
-  /* Raspberry */
-  --chili-100: #f7dce1;
-  --chili-500: #c24559;
-  --chili-700: #98303f;
+  /* Berry alert */
+  --chili-100: #f5e0ea;
+  --chili-500: #b85a7a;
+  --chili-700: #8f3f5c;
 
   --white: #ffffff;
-  --black: #120e0d;
+  --black: #120e14;
 
   --brand-primary: var(--marigold-400);
   --brand-primary-ink: var(--espresso-800);
@@ -80,11 +80,11 @@
   --radius-md: 14px;
   --radius-lg: 20px;
   --radius-xl: 28px;
-  --shadow-xs: 0 1px 2px rgba(60, 40, 38, 0.08);
-  --shadow-sm: 0 2px 6px rgba(60, 40, 38, 0.1);
-  --shadow-md: 0 6px 18px rgba(60, 40, 38, 0.12);
-  --shadow-lg: 0 16px 40px rgba(60, 40, 38, 0.16);
-  --shadow-focus: 0 0 0 3px rgba(213, 118, 111, 0.45);
+  --shadow-xs: 0 1px 2px rgba(42, 36, 51, 0.08);
+  --shadow-sm: 0 2px 6px rgba(42, 36, 51, 0.1);
+  --shadow-md: 0 6px 18px rgba(42, 36, 51, 0.12);
+  --shadow-lg: 0 16px 40px rgba(42, 36, 51, 0.16);
+  --shadow-focus: 0 0 0 3px rgba(154, 127, 199, 0.45);
 }
 
 *,

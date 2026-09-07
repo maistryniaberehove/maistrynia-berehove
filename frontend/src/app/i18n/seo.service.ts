@@ -72,7 +72,7 @@ export class SeoService {
     this.title.setTitle(title);
 
     this.meta.updateTag({ name: 'description', content: description });
-    this.meta.updateTag({ name: 'theme-color', content: '#E79088' });
+    this.meta.updateTag({ name: 'theme-color', content: '#B39CD9' });
 
     this.meta.updateTag({ property: 'og:type', content: 'website' });
     this.meta.updateTag({ property: 'og:site_name', content: brand });
