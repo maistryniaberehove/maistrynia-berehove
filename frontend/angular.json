@@ -26,7 +26,10 @@
             "security": {
               "allowedHosts": [
                 "*.vercel.app",
-                "localhost"
+                "localhost",
+                "maystrinya.in.ua",
+                "www.maystrinya.in.ua",
+                "maistrynia-berehove.vercel.app"
               ]
             },
             "assets": [
