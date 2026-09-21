@@ -19,7 +19,7 @@
 | Frontend | Angular 22 (standalone, signals, **SSR**) |
 | Стилі | Tailwind CSS |
 | Auth | JWT (access + refresh tokens) |
-| Хостинг | Frontend: Vercel (domain TBD); API: Railway |
+| Хостинг | Frontend: Vercel (`maystrinya.in.ua`); API: Railway |
 | Контейнери | Docker Compose (local DB) |
 | CI/CD | GitHub Actions |
 

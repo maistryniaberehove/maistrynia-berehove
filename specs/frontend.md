@@ -24,7 +24,7 @@
 - Storage: inject `LOCAL_STORAGE` (browser `localStorage` with safe no-ops; server no-op) — never touch `localStorage` / `document` / `window` in field initializers without platform guards
 
 ## SEO / SSR
-- Canonical origin is **`environment.siteOrigin`** (`https://f-n.fun` in production) — never `document.location` (preview hosts must not become canonical)
+- Canonical origin is **`environment.siteOrigin`** (`https://maystrinya.in.ua` in production) — never `document.location` (preview hosts must not become canonical)
 - `SeoService` sets unique `title`, `description`, `canonical`, reciprocal `hreflang` (`uk` / `en` / `x-default`→`/ua/...`), Open Graph / Twitter, and `html[lang]`
 - Product pages emit **JSON-LD** `Product` + `BreadcrumbList` (replaced on navigation, cleared on destroy)
 - Unmatched localized paths render `NotFoundComponent` with **HTTP 404**, `robots: noindex`, and **no** canonical/hreflang
@@ -95,4 +95,4 @@ Cache only public responses: `/api/products`, `/api/categories`, `/api/news`, `/
 ## robots.txt
 - Allow public storefront; disallow admin, cart, checkout, auth, profile, order (both locales)
 - Disallow catalog query duplicates (`category`, `search`, `minPrice`, `maxPrice`, `sortBy`, `page`)
-- `Sitemap: https://f-n.fun/sitemap.xml`
+- `Sitemap: https://maystrinya.in.ua/sitemap.xml`

@@ -13,7 +13,7 @@ namespace WebShop.API.Controllers;
 [Produces("application/xml")]
 public sealed class SitemapController : ControllerBase
 {
-    private const string SiteOrigin = "https://f-n.fun";
+    private const string SiteOrigin = "https://maystrinya.in.ua";
     private const string XhtmlNs = "http://www.w3.org/1999/xhtml";
     private static readonly string[] Locales = ["ua", "en"];
 

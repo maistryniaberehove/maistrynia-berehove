@@ -23,5 +23,4 @@ Disallow: /*?*maxPrice=
 Disallow: /*?*sortBy=
 Disallow: /*?*page=
 
-# TODO: set production domain when available
-# Sitemap: https://example.com/sitemap.xml
+Sitemap: https://maystrinya.in.ua/sitemap.xml
