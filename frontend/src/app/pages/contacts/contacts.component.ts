@@ -20,10 +20,11 @@ export class ContactsComponent {
   private readonly seo = inject(SeoService);
   private readonly destroyRef = inject(DestroyRef);
 
-  protected readonly phoneHref = 'tel:+380953488536';
-  protected readonly mapHref = 'https://maps.google.com/maps?q=48.2067040,22.6398470';
+  protected readonly phoneHref = 'tel:+380661345327';
+  protected readonly phone2Href = 'tel:+380997343159';
+  protected readonly mapHref = 'https://maps.google.com/maps?q=48.2077540,22.6427540';
   protected readonly mapEmbedUrl: SafeResourceUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
-    'https://maps.google.com/maps?q=48.2067040,22.6398470&z=16&output=embed',
+    'https://maps.google.com/maps?q=48.2077540,22.6427540&z=16&output=embed',
   );
   protected readonly days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'] as const;
 

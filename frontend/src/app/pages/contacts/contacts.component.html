@@ -16,15 +16,21 @@
             {{ 'contacts.title' | transloco }}
           </h1>
 
-          <section class="mt-10 space-y-3 text-base leading-relaxed sm:text-lg" aria-labelledby="contacts-phone">
+          <section class="mt-10 space-y-2 text-base leading-relaxed sm:text-lg" aria-labelledby="contacts-phone">
             <h2 id="contacts-phone" class="sr-only">{{ 'contacts.phoneLabel' | transloco }}</h2>
             <a
               [href]="phoneHref"
-              class="inline-block font-[var(--font-display)] text-[clamp(1.5rem,3.5vw,2rem)] font-extrabold text-[var(--cinnamon-700)] hover:text-[var(--espresso-900)]"
+              class="block font-[var(--font-display)] text-[clamp(1.5rem,3.5vw,2rem)] font-extrabold text-[var(--cinnamon-700)] hover:text-[var(--espresso-900)]"
             >
               {{ 'contacts.phone' | transloco }}
             </a>
-            <p class="m-0 text-[var(--espresso-700)]">{{ 'contacts.person' | transloco }}</p>
+            <a
+              [href]="phone2Href"
+              class="block font-[var(--font-display)] text-[clamp(1.5rem,3.5vw,2rem)] font-extrabold text-[var(--cinnamon-700)] hover:text-[var(--espresso-900)]"
+            >
+              {{ 'contacts.phone2' | transloco }}
+            </a>
+            <p class="m-0 pt-1 text-[var(--espresso-700)]">{{ 'contacts.person' | transloco }}</p>
           </section>
 
           <section class="mt-12" aria-labelledby="contacts-address">
@@ -38,6 +44,7 @@
               <p class="m-0">{{ 'contacts.region' | transloco }}</p>
               <p class="m-0 mt-1">{{ 'contacts.city' | transloco }}</p>
               <p class="m-0 mt-1">{{ 'contacts.place' | transloco }}</p>
+              <p class="m-0 mt-1">{{ 'contacts.postalCode' | transloco }}</p>
             </address>
 
             <div class="mt-6 overflow-hidden rounded-[var(--radius-lg)] border border-[var(--border-subtle)] bg-white shadow-[var(--shadow-xs)]">
